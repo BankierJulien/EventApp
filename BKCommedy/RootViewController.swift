@@ -92,7 +92,14 @@ class RootViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("You selected cell #\(indexPath.row)!")
         // PRAGMA MARK: HIDE VIEW SHOW CHOOSEN VIEW BUT KEEP MENU MAYBE PUT MENUE IN ITS OWN VIEW AND THEN HAVE EVERYHTING PRSENTED?
-       
+        
+        if indexPath.row == 2 {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "venueTableView") as? VenueTableViewController
+            self.navigationController?.present(vc!, animated: false, completion: {
+                print("presnted venue")
+            })
+        }
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
