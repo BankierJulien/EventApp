@@ -23,20 +23,16 @@ class VenueDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.venueDescription.numberOfLines = 0
-        
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.downloadVenueImage(imageUrl: self.imageString)
         self.imageNameLabel.text = self.venueName.text
         self.urlButton.setTitle(self.venueName.text! + ".com", for: UIControlState.normal)
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func downloadVenueImage(imageUrl: String){
@@ -45,24 +41,23 @@ class VenueDetailViewController: UIViewController {
         var image = UIImage()
         
         let downloadPicTask = session.dataTask(with: venueImageURL) { (data, response, error) in
-            // The download has finished.
             if let e = error {
                 print("Error downloading venue picture: \(e)")
-            } else {
-                // No errors found.
+            }
+            else {
                 if let res = response as? HTTPURLResponse {
                     print("Downloaded venue picture with response code \(res.statusCode)")
                     if let imageData = data {
-                        // Finally convert that Data into an image and do what you wish with it.
                         image = UIImage(data: imageData)!
                         DispatchQueue.main.async() { () -> Void in
                             self.venueImage.image = image
                         }
-                        // Do something with your image.
-                    } else {
+                    }
+                    else {
                         print("Couldn't get image: Image is nil")
                     }
-                } else {
+                }
+                else {
                     print("Couldn't get response code for some reason")
                 }
             }
@@ -77,16 +72,5 @@ class VenueDetailViewController: UIViewController {
         let url = URL(string: stringWithHTTPPrepended)
         UIApplication.shared.open(url!)
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
