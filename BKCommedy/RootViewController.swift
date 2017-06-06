@@ -68,21 +68,14 @@ class RootViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Getting the right element
         let item = menuItems[indexPath.row]
         
-        // Trying to reuse a cell
         let cellIdentifier = "cell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
             ?? UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
         
-        // Adding the right informations
         cell.textLabel?.text = item
         cell.backgroundColor = UIColor(red:0.38, green:0.63, blue:0.68, alpha:0.8)
-        
-       /* self.navigationController?.present(LineupViewController(), animated: false, completion: {
-            print("presented vc")
-        })*/
         
         //MARK: UIVIEW WITH BUTTONS INSTEAD OF HAMBURGER MENU
         // Returning the cell
@@ -244,12 +237,5 @@ class RootViewController: UIViewController, UITableViewDelegate, UITableViewData
         })
     }
     
-  /*  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ShowAboutVC" {
-            if let destinationVC = segue.destinationViewController as? AboutViewController {
-              
-            }
-        }
-    }*/
 }
 

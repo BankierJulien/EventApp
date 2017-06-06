@@ -15,6 +15,7 @@ class VenueTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.navigationController?.isToolbarHidden = false
     }
     
     override func didReceiveMemoryWarning() {

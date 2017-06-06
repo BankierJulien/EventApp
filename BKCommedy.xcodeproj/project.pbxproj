@@ -14,6 +14,7 @@
 		9A1809F81ED3770F005F4F0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A1809F61ED3770F005F4F0E /* LaunchScreen.storyboard */; };
 		9A180A031ED3770F005F4F0E /* BKCommedyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A180A021ED3770F005F4F0E /* BKCommedyTests.swift */; };
 		9A180A0E1ED3770F005F4F0E /* BKCommedyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A180A0D1ED3770F005F4F0E /* BKCommedyUITests.swift */; };
+		9A3CDDA91EE753E800DC283C /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3CDDA81EE753E800DC283C /* SWRevealViewController.m */; };
 		9A4CE84C1EE1EB1C00A68F74 /* CustomNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CE84B1EE1EB1C00A68F74 /* CustomNavViewController.swift */; };
 		9A501A1D1EDE38700075E61E /* VenueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A501A1C1EDE38700075E61E /* VenueDetailViewController.swift */; };
 		9A501A1F1EDE39B10075E61E /* VenueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A501A1E1EDE39B10075E61E /* VenueTableViewController.swift */; };
@@ -55,6 +56,9 @@
 		9A180A091ED3770F005F4F0E /* BKCommedyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BKCommedyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A180A0D1ED3770F005F4F0E /* BKCommedyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BKCommedyUITests.swift; sourceTree = "<group>"; };
 		9A180A0F1ED3770F005F4F0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A3CDDA61EE753E800DC283C /* BKCommedy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BKCommedy-Bridging-Header.h"; sourceTree = "<group>"; };
+		9A3CDDA71EE753E800DC283C /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		9A3CDDA81EE753E800DC283C /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		9A4CE84B1EE1EB1C00A68F74 /* CustomNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomNavViewController.swift; path = ../CustomNavViewController.swift; sourceTree = "<group>"; };
 		9A501A1C1EDE38700075E61E /* VenueDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VenueDetailViewController.swift; path = ../VenueDetailViewController.swift; sourceTree = "<group>"; };
 		9A501A1E1EDE39B10075E61E /* VenueTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueTableViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 				9A1809ED1ED3770F005F4F0E /* AppDelegate.swift */,
 				9A5ACBC11EDE30C800CAFDC7 /* Controllers */,
 				9A1809F11ED3770F005F4F0E /* Main.storyboard */,
+				9A3CDDAA1EE753F000DC283C /* SWReveal */,
 				9A5ACBC21EDE30D400CAFDC7 /* Models */,
 				9A1809F41ED3770F005F4F0E /* Assets.xcassets */,
 				9A1809F61ED3770F005F4F0E /* LaunchScreen.storyboard */,
@@ -140,6 +145,16 @@
 				9A180A0F1ED3770F005F4F0E /* Info.plist */,
 			);
 			path = BKCommedyUITests;
+			sourceTree = "<group>";
+		};
+		9A3CDDAA1EE753F000DC283C /* SWReveal */ = {
+			isa = PBXGroup;
+			children = (
+				9A3CDDA71EE753E800DC283C /* SWRevealViewController.h */,
+				9A3CDDA81EE753E800DC283C /* SWRevealViewController.m */,
+				9A3CDDA61EE753E800DC283C /* BKCommedy-Bridging-Header.h */,
+			);
+			name = SWReveal;
 			sourceTree = "<group>";
 		};
 		9A5ACBC11EDE30C800CAFDC7 /* Controllers */ = {
@@ -234,6 +249,7 @@
 					9A1809E91ED3770F005F4F0E = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = MQBMAJV8P4;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					9A1809FD1ED3770F005F4F0E = {
@@ -310,6 +326,7 @@
 				9A4CE84C1EE1EB1C00A68F74 /* CustomNavViewController.swift in Sources */,
 				9AD1E4741EDE19DB007F634B /* VenueStrings.swift in Sources */,
 				9A501A1D1EDE38700075E61E /* VenueDetailViewController.swift in Sources */,
+				9A3CDDA91EE753E800DC283C /* SWRevealViewController.m in Sources */,
 				9A5ACBC01EDE30A600CAFDC7 /* LineUpTableViewController.swift in Sources */,
 				9AA2791B1EDE2BA0006D2123 /* AboutViewController.swift in Sources */,
 			);
@@ -463,11 +480,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = MQBMAJV8P4;
 				INFOPLIST_FILE = BKCommedy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JulienBankier.BKCommedy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_DISABLE_SAFETY_CHECKS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "BKCommedy/BKCommedy-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -476,11 +497,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = MQBMAJV8P4;
 				INFOPLIST_FILE = BKCommedy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JulienBankier.BKCommedy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_DISABLE_SAFETY_CHECKS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "BKCommedy/BKCommedy-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
