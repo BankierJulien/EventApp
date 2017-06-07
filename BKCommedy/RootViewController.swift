@@ -7,9 +7,11 @@
 //
 
 import UIKit
+//import SWRevealViewController.h
 
 class RootViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
+    @IBOutlet var menuButton: UIBarButtonItem!
     @IBOutlet var gestureScreenEdgePan: UIScreenEdgePanGestureRecognizer!
     @IBOutlet var viewBlack: UIView!
     let maxBlackViewAlpha:CGFloat = 0.5
@@ -28,27 +30,39 @@ class RootViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if self.revealViewController() != nil {
+            menuButton.target = self.revealViewController()
+            menuButton.action = "revealToggle:"
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
+        
+        self.revealViewController().rearViewRevealWidth = self.view.frame.width/2
+        //self.revealViewController().view.backgroundColor =  UIColor(red:0.38, green:0.63, blue:0.68, alpha:0.6)
+        
+        
+        
         // menue table and shadow effect set up
-        leftConstraint.constant = -leftWidthConstraint.constant
+      /*  leftConstraint.constant = -leftWidthConstraint.constant
         viewBlack.alpha = 0
         viewBlack.isHidden = true
         
         // menu table view set up
         self.hamburgerMenuTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        self.hamburgerMenuTableView.tableFooterView = UIView(frame:.zero)
+        self.hamburgerMenuTableView.tableFooterView = UIView(frame:.zero)*/
         
         // view set up
         self.view.backgroundColor = UIColor(red:0.38, green:0.63, blue:0.68, alpha:1.0)
-        self.hamburgerMenuTableView.backgroundColor = UIColor(red:0.38, green:0.63, blue:0.68, alpha:0.8)
+      //  self.hamburgerMenuTableView.backgroundColor = UIColor(red:0.38, green:0.63, blue:0.68, alpha:0.8)
         
         // nav bar button
-        let button = UIButton.init(type: .custom)
+      /*  let button = UIButton.init(type: .custom)
         button.setImage(UIImage.init(named: "HamburgerMenuItem.png"), for: UIControlState.normal)
         button.addTarget(self, action:#selector(self.buttonHamburger), for: UIControlEvents.touchUpInside)
         button.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30) //CGRectMake(0, 0, 30, 30)
         let barButton = UIBarButtonItem.init(customView: button)
         self.navigationItem.leftBarButtonItem = barButton
-        self.title = "BK COMMEDY FESTIVAL"
+        self.title = "BK COMMEDY FESTIVAL"*/
         
     }
 
@@ -98,7 +112,7 @@ class RootViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     
     // MARK: Gestures
-
+/*
     @IBAction func gestureScreenEdgePan(_ sender: UIScreenEdgePanGestureRecognizer) {
         
         // retrieve the current state of the gesture
@@ -144,7 +158,7 @@ class RootViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func gestureTap(_ sender: UITapGestureRecognizer) {
         self.hideMenu()
     }
-    
+    */
     
     @IBAction func gesturePan(_ sender: UIPanGestureRecognizer) {
         
@@ -179,16 +193,16 @@ class RootViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             // if the drag was less than half of it's width, close it. Otherwise, open it.
             if leftConstraint.constant < -leftWidthConstraint.constant / 2 {
-                self.hideMenu()
+          //      self.hideMenu()
             } else {
-                self.openMenu()
+          //      self.openMenu()
             }
         }
     }
     
     // MARK: Buttons
     
-    @IBAction func buttonHamburger(_ sender: Any) {
+  /*  @IBAction func buttonHamburger(_ sender: Any) {
         // PRAGMA MARK : FIX THIS LOGIC SINCE IT NOT WORKING WHEN U PPULL AWAY
         if !self.barButtonPressed{
             self.openMenu()
@@ -235,7 +249,7 @@ class RootViewController: UIViewController, UITableViewDelegate, UITableViewData
             // hide the view for dimming effect so it wont interrupt touches for views underneath it
             self.viewBlack.isHidden = true
         })
-    }
+    }*/
     
 }
 

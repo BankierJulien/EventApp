@@ -10,9 +10,16 @@ import UIKit
 
 class AboutViewController: UIViewController {
 
+    @IBOutlet var menuButton: UIBarButtonItem!
     @IBOutlet var aboutTextView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if self.revealViewController() != nil {
+            menuButton.target = self.revealViewController()
+            menuButton.action = "revealToggle:"
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
         self.aboutTextView.text = AboutStrings().about
 
         // Do any additional setup after loading the view.

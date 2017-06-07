@@ -1,17 +1,26 @@
 //
-//  CustomNavViewController.swift
+//  EventsAndSchedualViewController.swift
 //  BKCommedy
 //
-//  Created by Julien Bankier on 6/2/17.
+//  Created by Julien Bankier on 6/7/17.
 //  Copyright © 2017 Julien Bankier. All rights reserved.
 //
 
 import UIKit
 
-class CustomNavViewController: UINavigationController {
+class EventsAndSchedualViewController: UIViewController {
 
+    @IBOutlet var menuButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if self.revealViewController() != nil {
+            menuButton.target = self.revealViewController()
+            menuButton.action = "revealToggle:"
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
+
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

@@ -10,6 +10,7 @@ import UIKit
 
 class VenueDetailViewController: UIViewController {
     
+    @IBOutlet var menuButton: UIBarButtonItem!
     @IBOutlet var venueImage: UIImageView!
     @IBOutlet var venueName: UILabel!
     @IBOutlet var venueAddress: UILabel!
@@ -23,6 +24,11 @@ class VenueDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.venueDescription.numberOfLines = 0
+        if self.revealViewController() != nil {
+            menuButton.target = self.revealViewController()
+            menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

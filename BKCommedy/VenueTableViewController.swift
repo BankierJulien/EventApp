@@ -13,8 +13,14 @@ class VenueTableViewController: UITableViewController {
     let venues = VenueStrings().venueArray
     var venueImage = UIImage()
     
+    @IBOutlet var menuButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
+        if self.revealViewController() != nil {
+            menuButton.target = self.revealViewController()
+            menuButton.action = "revealToggle:"
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
         //self.navigationController?.isToolbarHidden = false
     }
     
@@ -33,7 +39,7 @@ class VenueTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "venueCell", for: indexPath) as! VenueTableViewCell
         cell.venueName.text = venue["name"]
         //place holder
-        cell.venueImage.image = #imageLiteral(resourceName: "HamburgerMenuItem")
+        cell.venueImage.image = #imageLiteral(resourceName: "venues")
         return cell
     }
     
