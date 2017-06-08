@@ -109,52 +109,11 @@
                                                     <rect key="frame" x="21" y="0.0" width="82" height="91"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyd-Ex-4Vf">
-                                                    <rect key="frame" x="297" y="7" width="70" height="59"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button" image="close"/>
-                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="eventAttendButton" destination="xyd-Ex-4Vf" id="ceT-TX-znA"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dv7-yq-TIm">
-                                <rect key="frame" x="0.0" y="64" width="375" height="49"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="49" id="IUX-IN-zVi"/>
-                                </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="I63-fO-z0m">
-                                    <size key="itemSize" width="79" height="49.5"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="dayCollectionViewCell" id="yhl-x1-N2J" customClass="DayCollectionViewCell" customModule="BKCommedy" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="-0.5" width="79" height="49.5"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="79" height="49.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L01-wV-1Vf">
-                                                    <rect key="frame" x="0.0" y="0.0" width="79" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </view>
-                                        <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g9I-sL-NKg">
                                 <rect key="frame" x="0.0" y="618" width="375" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -163,16 +122,48 @@
                                     <tabBarItem tag="1" title="my events" id="34T-eh-ACj"/>
                                 </items>
                             </tabBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bOA-1s-4mb">
+                                <rect key="frame" x="5" y="74" width="36" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="MON"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yin-56-bct">
+                                <rect key="frame" x="62" y="74" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="TUE"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S7s-Km-2Nj">
+                                <rect key="frame" x="114" y="74" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="WED"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZ5-u9-G2d">
+                                <rect key="frame" x="169" y="74" width="32" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="THU"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I5p-Mf-irf">
+                                <rect key="frame" x="224" y="74" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="FRI"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WME-ec-1AA">
+                                <rect key="frame" x="278" y="74" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="SAT"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5po-21-4mH">
+                                <rect key="frame" x="331" y="74" width="32" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="SUN"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="g9I-sL-NKg" firstAttribute="top" secondItem="JLV-rm-Ms9" secondAttribute="bottom" id="3aV-2l-K7e"/>
                             <constraint firstItem="g9I-sL-NKg" firstAttribute="top" secondItem="JLV-rm-Ms9" secondAttribute="bottom" id="3iz-N0-WHu"/>
-                            <constraint firstItem="dv7-yq-TIm" firstAttribute="top" secondItem="TfT-HP-Hg1" secondAttribute="bottom" id="5Nd-5L-50D"/>
                             <constraint firstAttribute="trailing" secondItem="JLV-rm-Ms9" secondAttribute="trailing" id="F3u-Bh-FAo"/>
                             <constraint firstItem="JLV-rm-Ms9" firstAttribute="top" secondItem="TfT-HP-Hg1" secondAttribute="bottom" constant="48" id="NfN-k9-nhc"/>
-                            <constraint firstItem="dv7-yq-TIm" firstAttribute="leading" secondItem="3AV-q2-hG7" secondAttribute="leading" id="kkj-d9-agi"/>
-                            <constraint firstAttribute="trailing" secondItem="dv7-yq-TIm" secondAttribute="trailing" id="l3y-FL-zBh"/>
                             <constraint firstItem="JLV-rm-Ms9" firstAttribute="leading" secondItem="3AV-q2-hG7" secondAttribute="leading" id="lRl-OL-X5y"/>
                             <constraint firstAttribute="trailing" secondItem="g9I-sL-NKg" secondAttribute="trailing" id="mIw-eB-BWu"/>
                             <constraint firstItem="6ey-z7-E6r" firstAttribute="top" secondItem="g9I-sL-NKg" secondAttribute="bottom" id="q1s-T5-dxp"/>
@@ -183,15 +174,21 @@
                         <barButtonItem key="leftBarButtonItem" title="Item" id="yJw-yi-9Wa"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="dayPickerCollectionView" destination="dv7-yq-TIm" id="hnY-NK-yfK"/>
                         <outlet property="eventTableView" destination="JLV-rm-Ms9" id="Wik-GE-qsV"/>
+                        <outlet property="fridayButton" destination="I5p-Mf-irf" id="qFf-M8-fRD"/>
                         <outlet property="menuButton" destination="yJw-yi-9Wa" id="TX1-yv-kQ5"/>
+                        <outlet property="mondayButton" destination="bOA-1s-4mb" id="ehw-CY-erG"/>
+                        <outlet property="saturdayButton" destination="WME-ec-1AA" id="j8J-2k-Djj"/>
+                        <outlet property="sudayButton" destination="5po-21-4mH" id="78W-qX-xYt"/>
                         <outlet property="tabBar" destination="g9I-sL-NKg" id="53X-ML-CmE"/>
+                        <outlet property="thursdayButton" destination="BZ5-u9-G2d" id="B0P-W2-LQE"/>
+                        <outlet property="tuesdayButton" destination="Yin-56-bct" id="pep-eg-Fjj"/>
+                        <outlet property="wednesdayButton" destination="S7s-Km-2Nj" id="BOw-QM-tnU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2lM-qC-OYZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1205.5999999999999" y="-170.46476761619192"/>
+            <point key="canvasLocation" x="969" y="-187"/>
         </scene>
         <!--Event Detail View-->
         <scene sceneID="sr4-r0-zw2">
@@ -833,7 +830,6 @@
         <image name="HamburgerMenuItem" width="22" height="22"/>
         <image name="SplashPage" width="1400" height="900"/>
         <image name="about" width="1000" height="369"/>
-        <image name="close" width="512" height="512"/>
         <image name="events" width="1000" height="369"/>
         <image name="venues" width="1000" height="369"/>
     </resources>

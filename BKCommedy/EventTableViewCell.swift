@@ -9,7 +9,6 @@
 import UIKit
 
 class EventTableViewCell: UITableViewCell {
-    @IBOutlet var eventAttendButton: UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,5 +20,8 @@ class EventTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+//change image?
+    @IBAction func addEventPressed(_ sender: Any) {
+        
+    }
 }
