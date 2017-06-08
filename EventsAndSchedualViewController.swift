@@ -16,12 +16,12 @@ enum day: Int {
     case friday = 5
     case saturday = 6
     case sunday = 7
-
+    
 }
 
 class EventsAndSchedualViewController: UIViewController {
     
-//    @IBOutlet weak var dayPickerCollectionView: UICollectionView!
+    //    @IBOutlet weak var dayPickerCollectionView: UICollectionView!
     @IBOutlet weak var eventTableView: UITableView!
     @IBOutlet weak var tabBar: UITabBar!
     
@@ -31,10 +31,13 @@ class EventsAndSchedualViewController: UIViewController {
     @IBOutlet var thursdayButton: UIButton!
     @IBOutlet var fridayButton: UIButton!
     @IBOutlet var saturdayButton: UIButton!
-    @IBOutlet var sudayButton: UIButton!
+    @IBOutlet var sundayButton: UIButton!
+    var attendButton = UIButton()
+
     
+    var dayButtonArray = [UIButton]()
     let events = EventManager()
-    var currentDay = 1
+    var currentDayEvents = [Events]()
     var myEvents = [Events]()
     // MARK : add events to your scehdaul, see them based on day, go to detail view of event, buy tickets from site if indiviually bought, empty message + animations if nothing there,
     
@@ -43,6 +46,14 @@ class EventsAndSchedualViewController: UIViewController {
     @IBOutlet var menuButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.dayButtonArray.append(mondayButton)
+        self.dayButtonArray.append(tuesdayButton)
+        self.dayButtonArray.append(wednesdayButton)
+        self.dayButtonArray.append(thursdayButton)
+        self.dayButtonArray.append(fridayButton)
+        self.dayButtonArray.append(saturdayButton)
+        self.dayButtonArray.append(sundayButton)
+        
         
         // menu logic
         if self.revealViewController() != nil {
@@ -59,14 +70,15 @@ class EventsAndSchedualViewController: UIViewController {
         self.eventTableView.delegate = self
         self.eventTableView.dataSource = self
         
-        self.mondayButton.addTarget(self, action:#selector(didPressDayButton(sender:)), for: .touchUpInside)
-        self.tuesdayButton.addTarget(self, action:#selector(didPressDayButton(sender:)), for: .touchUpInside)
-
-
+        self.currentDayEvents = self.events.mondayEvents
+        
+        for button in self.dayButtonArray{
+            button.addTarget(self, action:#selector(didPressDayButton(sender:)), for: .touchUpInside)
+        }
+    
     }
     
 
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -74,23 +86,18 @@ class EventsAndSchedualViewController: UIViewController {
     
     func didPressDayButton(sender:UIButton) {
         if sender == self.mondayButton{
-            self.currentDay = day.monday.rawValue
+            self.currentDayEvents = self.events.mondayEvents
         }
         else if sender == self.tuesdayButton{
-            self.currentDay = day.tuesday.rawValue
+            self.currentDayEvents = self.events.tuesdayEvents
         }
         self.eventTableView.reloadData()
-        
     }
-    
-    
-    
+
 }
 
 
 //MARK: TableView
-
-
 extension EventsAndSchedualViewController : UITableViewDelegate{
     
 }
@@ -102,36 +109,61 @@ extension EventsAndSchedualViewController : UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.currentDay == day.monday.rawValue{
-            return events.mondayEvents.count
-        }
-        else if self.currentDay == day.tuesday.rawValue{
-            return 1
+        // MARK : MUST BE AN EASIER WAY
+        if self.tabBar.selectedItem?.tag == 0 {
+            return self.currentDayEvents.count
         }
         else {
-            return 2
+            return self.myEvents.count
         }
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! EventTableViewCell
-        let attendButton = UIButton(frame: CGRect(x:0, y:0, width:50, height:50))
-        attendButton.setImage(#imageLiteral(resourceName: "close"), for: .normal)
-        attendButton.addTarget(self, action: #selector(didPressAttendButton(sender:)), for: .touchUpInside)
-        cell.accessoryView = attendButton;
-        attendButton.tag = indexPath.row
-        cell.textLabel?.text = events.mondayEvents[indexPath.row].name
+        
+        self.attendButton = UIButton(frame: CGRect(x:0, y:0, width:50, height:50))
+        self.attendButton.setImage(#imageLiteral(resourceName: "empty"), for: .normal)
+        self.attendButton.addTarget(self, action: #selector(didPressAttendButton(sender:)), for: .touchUpInside)
+        cell.accessoryView = self.attendButton;
+        self.attendButton.tag = indexPath.row
+        
+        // MARK : MUST BE AN EASIER WAY
+        
+        if self.tabBar.selectedItem?.tag == 0 {
+            //def easier way to do this
+            cell.eventPerformer.text = self.currentDayEvents[indexPath.row].name
+            cell.eventTime.text = self.currentDayEvents[indexPath.row].time
+            cell.eventVenue.text = self.currentDayEvents[indexPath.row].venue
+            cell.eventImage.image = #imageLiteral(resourceName: "SplashPage")
+        }
+        else {
+            cell.eventPerformer.text = self.myEvents[indexPath.row].name
+            cell.eventTime.text = self.myEvents[indexPath.row].time
+            cell.eventVenue.text = self.myEvents[indexPath.row].venue
+            cell.eventImage.image = #imageLiteral(resourceName: "SplashPage")
+        }
+        
         return cell
     }
     
-    func didPressAttendButton(sender:UIButton) {
-        print(sender.tag)
-    //    self.myEvents.append(<#T##newElement: Any##Any#>)
-      
-        
-    }
     
+    func didPressAttendButton(sender:UIButton) {
+        //fix this if it dsnt work
+        
+        
+        //remove duplicates
+        if self.tabBar.selectedItem?.tag == 0 {
+            self.attendButton.setImage(#imageLiteral(resourceName: "checked"), for: .selected)
+            sender.isSelected = !sender.isSelected
+            self.myEvents.append(self.currentDayEvents[sender.tag])
+        }
+        else {
+            self.attendButton.setImage(#imageLiteral(resourceName: "close"), for: .normal)
+            sender.isSelected = !sender.isSelected
+            self.myEvents.remove(at: sender.tag)
+            self.eventTableView.reloadData()
+        }
+    }
 }
 
 //MARK : TABBAR
@@ -139,17 +171,19 @@ extension EventsAndSchedualViewController : UITableViewDataSource{
 extension EventsAndSchedualViewController : UITabBarDelegate{
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        switch item.tag  {
-        case 0:
-            print("0")
-            break
-        case 1:
-            print("1")
-            break
-      
-        default:
-            print("0")
-            break
+        for event in self.myEvents{
+            print(event.name)
+        }
+        self.removeDuplicates(array: self.myEvents)
+        for event in self.myEvents{
+            print(event.name)
+        }
+        self.eventTableView.reloadData()
+    }
+    //MARK:  find a way to remove duplicates
+    func removeDuplicates(array: [Events]) {
+        for event in array {
         }
     }
+    
 }

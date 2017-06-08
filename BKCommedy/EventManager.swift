@@ -11,19 +11,32 @@ import Foundation
 
 
 struct EventManager {
-    // make a class of type nsdictionary that returns a dictionary wiht the shit needed
+
     var allEvents = [Events]()
     var mondayEvents = [Events]()
+    var tuesdayEvents = [Events]()
+
     // sixty One Local
-     let testEventOne = Events(name: "edy", time: "10:0", tickets: "url", venue: "sixtyOneLocal", date: "monday", userAddedToCalender: false, discription: "event")
-     let testEventTwo = Events(name: "edy", time: "10:0", tickets: "url", venue: "sixtyOneLocal", date: "monday", userAddedToCalender: false, discription: "event")
+    let testEventOne = Events(name: "edy", time: "10:0", tickets: "url", venue: "sixtyOneLocal", date: "monday",  discription: "event", id: 1)
+    let testEventTwo = Events(name: "fred", time: "10:0", tickets: "url", venue: "sixtyOneLocal", date: "monday",  discription: "event", id: 2)
+    let testEventThree = Events(name: "bob", time: "doors open 10", tickets: "url", venue: "sixtyOneLocal", date: "tuesday",  discription: "event", id: 3)
+    
     
     init(){
         self.allEvents.append(testEventOne)
         self.allEvents.append(testEventTwo)
+        self.allEvents.append(testEventThree)
+        // make this better
         for event in self.allEvents{
             if event.date == "monday"{
                 self.mondayEvents.append(event)
+            }
+            else if event.date == "tuesday"{
+                self.tuesdayEvents.append(event)
+            }
+            else if event.date == "wednesday"{
+            }
+            else if event.date == "thursday"{
             }
         }
     }

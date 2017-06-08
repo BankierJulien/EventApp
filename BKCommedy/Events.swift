@@ -15,18 +15,18 @@ struct Events {
     let tickets: String
     let venue: String
     let date: String
-    let discription : String 
-    var userAddedToCalender : Bool
+    let discription : String
+    let id: Int
     
     
-    init(name: String, time: String, tickets: String, venue: String, date: String, userAddedToCalender: Bool, discription: String, key: String = "") {
+    init(name: String, time: String, tickets: String, venue: String, date: String, discription: String, key: String = "", id: Int) {
         self.name = name
         self.time = time
         self.tickets = tickets
         self.venue = venue
         self.date = date
         self.discription = discription
-        self.userAddedToCalender = userAddedToCalender
+        self.id = id
     }
     
     func toAnyObject() -> Any {
@@ -37,7 +37,7 @@ struct Events {
             "venue": venue,
             "date": date,
             "discription": discription,
-            "userAddedToCalender": userAddedToCalender
+            "id" : id
         ]
     }
     

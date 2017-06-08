@@ -15,14 +15,13 @@
 		9A180A031ED3770F005F4F0E /* BKCommedyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A180A021ED3770F005F4F0E /* BKCommedyTests.swift */; };
 		9A180A0E1ED3770F005F4F0E /* BKCommedyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A180A0D1ED3770F005F4F0E /* BKCommedyUITests.swift */; };
 		9A3CDDA91EE753E800DC283C /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3CDDA81EE753E800DC283C /* SWRevealViewController.m */; };
-		9A3CDDAC1EE758A700DC283C /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3CDDAB1EE758A700DC283C /* MenuTableViewController.swift */; };
 		9A501A1D1EDE38700075E61E /* VenueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A501A1C1EDE38700075E61E /* VenueDetailViewController.swift */; };
 		9A501A1F1EDE39B10075E61E /* VenueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A501A1E1EDE39B10075E61E /* VenueTableViewController.swift */; };
 		9A99C4121EE87BD800957146 /* EventsAndSchedualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A99C4111EE87BD800957146 /* EventsAndSchedualViewController.swift */; };
 		9A9E62351EE9BFE500AD3B4C /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9E62341EE9BFE500AD3B4C /* EventTableViewCell.swift */; };
-		9A9E62371EE9C24900AD3B4C /* DayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9E62361EE9C24900AD3B4C /* DayCollectionViewCell.swift */; };
 		9A9E62391EE9C6A300AD3B4C /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9E62381EE9C6A300AD3B4C /* Events.swift */; };
 		9A9E623B1EE9C8D400AD3B4C /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9E623A1EE9C8D400AD3B4C /* EventManager.swift */; };
+		9A9E623D1EE9FA9400AD3B4C /* Venues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9E623C1EE9FA9300AD3B4C /* Venues.swift */; };
 		9AA2791B1EDE2BA0006D2123 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA2791A1EDE2BA0006D2123 /* AboutViewController.swift */; };
 		9AA2791D1EDE2ED8006D2123 /* AboutStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA2791C1EDE2ED8006D2123 /* AboutStrings.swift */; };
 		9AD1E4741EDE19DB007F634B /* VenueStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD1E4731EDE19DB007F634B /* VenueStrings.swift */; };
@@ -63,14 +62,13 @@
 		9A3CDDA61EE753E800DC283C /* BKCommedy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BKCommedy-Bridging-Header.h"; sourceTree = "<group>"; };
 		9A3CDDA71EE753E800DC283C /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		9A3CDDA81EE753E800DC283C /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
-		9A3CDDAB1EE758A700DC283C /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		9A501A1C1EDE38700075E61E /* VenueDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VenueDetailViewController.swift; path = ../VenueDetailViewController.swift; sourceTree = "<group>"; };
 		9A501A1E1EDE39B10075E61E /* VenueTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueTableViewController.swift; sourceTree = "<group>"; };
 		9A99C4111EE87BD800957146 /* EventsAndSchedualViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsAndSchedualViewController.swift; path = ../EventsAndSchedualViewController.swift; sourceTree = "<group>"; };
 		9A9E62341EE9BFE500AD3B4C /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
-		9A9E62361EE9C24900AD3B4C /* DayCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCollectionViewCell.swift; sourceTree = "<group>"; };
 		9A9E62381EE9C6A300AD3B4C /* Events.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		9A9E623A1EE9C8D400AD3B4C /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
+		9A9E623C1EE9FA9300AD3B4C /* Venues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venues.swift; sourceTree = "<group>"; };
 		9AA2791A1EDE2BA0006D2123 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		9AA2791C1EDE2ED8006D2123 /* AboutStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutStrings.swift; sourceTree = "<group>"; };
 		9AD1E4731EDE19DB007F634B /* VenueStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueStrings.swift; sourceTree = "<group>"; };
@@ -169,10 +167,8 @@
 			isa = PBXGroup;
 			children = (
 				9A1809EF1ED3770F005F4F0E /* RootViewController.swift */,
-				9A3CDDAB1EE758A700DC283C /* MenuTableViewController.swift */,
 				9A99C4111EE87BD800957146 /* EventsAndSchedualViewController.swift */,
 				9A9E62341EE9BFE500AD3B4C /* EventTableViewCell.swift */,
-				9A9E62361EE9C24900AD3B4C /* DayCollectionViewCell.swift */,
 				9A501A1C1EDE38700075E61E /* VenueDetailViewController.swift */,
 				9A501A1E1EDE39B10075E61E /* VenueTableViewController.swift */,
 				9AE8694C1EDF41D000838657 /* VenueTableViewCell.swift */,
@@ -185,9 +181,10 @@
 			isa = PBXGroup;
 			children = (
 				9AD1E4731EDE19DB007F634B /* VenueStrings.swift */,
+				9A9E623A1EE9C8D400AD3B4C /* EventManager.swift */,
 				9AA2791C1EDE2ED8006D2123 /* AboutStrings.swift */,
 				9A9E62381EE9C6A300AD3B4C /* Events.swift */,
-				9A9E623A1EE9C8D400AD3B4C /* EventManager.swift */,
+				9A9E623C1EE9FA9300AD3B4C /* Venues.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -332,7 +329,6 @@
 			files = (
 				9A9E62351EE9BFE500AD3B4C /* EventTableViewCell.swift in Sources */,
 				9A99C4121EE87BD800957146 /* EventsAndSchedualViewController.swift in Sources */,
-				9A9E62371EE9C24900AD3B4C /* DayCollectionViewCell.swift in Sources */,
 				9AA2791D1EDE2ED8006D2123 /* AboutStrings.swift in Sources */,
 				9A9E62391EE9C6A300AD3B4C /* Events.swift in Sources */,
 				9A1809F01ED3770F005F4F0E /* RootViewController.swift in Sources */,
@@ -342,7 +338,7 @@
 				9A501A1F1EDE39B10075E61E /* VenueTableViewController.swift in Sources */,
 				9AD1E4741EDE19DB007F634B /* VenueStrings.swift in Sources */,
 				9A501A1D1EDE38700075E61E /* VenueDetailViewController.swift in Sources */,
-				9A3CDDAC1EE758A700DC283C /* MenuTableViewController.swift in Sources */,
+				9A9E623D1EE9FA9400AD3B4C /* Venues.swift in Sources */,
 				9A3CDDA91EE753E800DC283C /* SWRevealViewController.m in Sources */,
 				9AA2791B1EDE2BA0006D2123 /* AboutViewController.swift in Sources */,
 			);
