@@ -11,6 +11,15 @@ import UIKit
 
 class RootViewController: UIViewController {
     
+    // TODO:
+//    For event and sched : - events button toggle, - events load image, - events detail view, - scehdual switch properly, - remove duplicates from myevents, - events detail view
+//    for venues : downlaod imaegs properly, figure out nav control, implemtn map view, ui updates
+    // about: add faq
+    // ui in general
+    // root view: add content, have iamges animating
+    // menu have sponsers animate
+    // unit test?
+    
     @IBOutlet var menuButton: UIBarButtonItem!
     @IBOutlet var gestureScreenEdgePan: UIScreenEdgePanGestureRecognizer!
     @IBOutlet var testImage: UIImageView!

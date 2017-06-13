@@ -43,3 +43,27 @@ struct Events {
     
 }
 
+
+/*extension Events : Equatable {
+ 
+ public static func ==(lhs: Events, rhs: Events) -> Bool{
+ 
+ return (lhs.name == rhs.name) &&
+ (lhs.time == rhs.time) &&
+ (lhs.tickets == rhs.tickets) &&
+ (lhs.venue == rhs.venue) &&
+ (lhs.date == rhs.date) &&
+ (lhs.discription == rhs.discription)
+ }
+ 
+ }
+ 
+ extension Events : Comparable{
+ 
+ public static func <(lhs: Events, rhs: Events) -> Bool{
+ return lhs.name < rhs.name
+ }
+ }
+ 
+*/
+
