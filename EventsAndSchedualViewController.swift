@@ -137,6 +137,7 @@ extension EventsAndSchedualViewController : UITableViewDataSource{
             cell.eventImage.image = #imageLiteral(resourceName: "SplashPage")
         }
         else {
+            
             cell.eventPerformer.text = self.myEvents[indexPath.row].name
             cell.eventTime.text = self.myEvents[indexPath.row].time
             cell.eventVenue.text = self.myEvents[indexPath.row].venue
@@ -153,12 +154,12 @@ extension EventsAndSchedualViewController : UITableViewDataSource{
         
         //remove duplicates
         if self.tabBar.selectedItem?.tag == 0 {
-            self.attendButton.setImage(#imageLiteral(resourceName: "checked"), for: .selected)
+          //  self.attendButton.setImage(#imageLiteral(resourceName: "checked"), for: .selected)
             sender.isSelected = !sender.isSelected
             self.myEvents.append(self.currentDayEvents[sender.tag])
         }
         else {
-            self.attendButton.setImage(#imageLiteral(resourceName: "close"), for: .normal)
+           // self.attendButton.setImage(#imageLiteral(resourceName: "close"), for: .normal)
             sender.isSelected = !sender.isSelected
             self.myEvents.remove(at: sender.tag)
             self.eventTableView.reloadData()
@@ -182,7 +183,7 @@ extension EventsAndSchedualViewController : UITabBarDelegate{
     }
     //MARK:  find a way to remove duplicates
     func removeDuplicates(array: [Events]) {
-        for event in array {
+        for _ in array {
         }
     }
     

@@ -18,7 +18,7 @@ class VenueTableViewController: UITableViewController {
         super.viewDidLoad()
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
-            menuButton.action = "revealToggle:"
+            menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         //self.navigationController?.isToolbarHidden = false
@@ -47,13 +47,14 @@ class VenueTableViewController: UITableViewController {
         print("You selected cell #\(indexPath.row)!")
        let venue = venues[indexPath.row]
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "DetailView") as? VenueDetailViewController
-        self.present(vc!, animated: false, completion: nil)
         // add saftery here
+        self.present(vc!, animated: false, completion: nil)
         vc?.venueName.text = venue["name"]!
         vc?.venueNumber.text = venue["number"]!
         vc?.venueAddress.text = venue["address"]!
         vc?.venueDescription.text = venue["discription"]!
         vc?.imageString = venue["image"]!
+
     }
     
     
