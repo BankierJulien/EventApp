@@ -7,3 +7,37 @@
 //
 
 import Foundation
+struct Venues {
+    
+    let name: String
+    let address: String
+    let number: String
+    let url: String
+    let description: String
+    let imageString : String
+   // let id: Int
+    //FIND A WAY TO LOAD IMAGE IN HERE
+    
+    init(name: String, address: String, number: String, url: String, description: String, imageString: String) {
+        self.name = name
+        self.address = address
+        self.number = number
+        self.url = url
+        self.description = description
+        self.imageString = imageString
+    }
+    
+   
+    
+    func toAnyObject() -> Any {
+        return [
+            "name": name,
+            "address": address,
+            "number": number,
+            "url": url,
+            "description": description,
+            "imageString": imageString
+        ]
+    }
+    
+}
