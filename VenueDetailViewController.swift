@@ -32,7 +32,12 @@ class VenueDetailViewController: UIViewController {
         self.navigationController?.title = "BK Comedy Fest Venues"
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.venueImage.isHidden = true
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
+        self.venueImage.isHidden = false
         self.venueImage.image = self.passedImage
         self.venueName.text = self.selectedVenue.name
         self.venueNumber.text = self.selectedVenue.number

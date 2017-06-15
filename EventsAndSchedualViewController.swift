@@ -186,5 +186,4 @@ extension EventsAndSchedualViewController : UITabBarDelegate{
         for _ in array {
         }
     }
-    
 }
