@@ -40,22 +40,7 @@ class VenueTableViewController: UITableViewController {
         let venue = venues[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "venueCell", for: indexPath) as! VenueTableViewCell
         cell.venueName.text = venue.name
-        //added concruet quee make sure this works
-        let url = URL(string: venue.imageString)
-        let concurrentQueue = DispatchQueue(label: "queuename", attributes: .concurrent)
-        concurrentQueue.sync {
-            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-                if error != nil {
-                    print(error!)
-                    return
-                }
-                DispatchQueue.main.async {
-                    cell.venueImage.image = UIImage(data: data!)
-                }
-            }).resume()
-        }
-       
-        
+        cell.venueImage.image = venue.image
         return cell
     }
     
@@ -70,8 +55,6 @@ class VenueTableViewController: UITableViewController {
             let detailVC = segue.destination as! VenueDetailViewController
             let indexPath = self.tableView.indexPathForSelectedRow!
             let row = indexPath.row
-            let currentCell = self.tableView.cellForRow(at: indexPath) as! VenueTableViewCell!
-            detailVC.passedImage = (currentCell?.venueImage.image)!
             detailVC.selectedVenue = venues[row]
         }
     }

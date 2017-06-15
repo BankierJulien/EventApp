@@ -131,6 +131,7 @@
 				9A3CDDAA1EE753F000DC283C /* SWReveal */,
 				9A5ACBC21EDE30D400CAFDC7 /* Models */,
 				9A1809F41ED3770F005F4F0E /* Assets.xcassets */,
+				9ADB27711EF3234C00DEE18E /* New Group */,
 				9A1809F61ED3770F005F4F0E /* LaunchScreen.storyboard */,
 				9A1809F91ED3770F005F4F0E /* Info.plist */,
 			);
@@ -169,13 +170,10 @@
 			isa = PBXGroup;
 			children = (
 				9A1809EF1ED3770F005F4F0E /* RootViewController.swift */,
-				9A99C4111EE87BD800957146 /* EventsAndSchedualViewController.swift */,
-				9A9E62341EE9BFE500AD3B4C /* EventTableViewCell.swift */,
-				9A501A1C1EDE38700075E61E /* VenueDetailViewController.swift */,
-				9A501A1E1EDE39B10075E61E /* VenueTableViewController.swift */,
-				9AE8694C1EDF41D000838657 /* VenueTableViewCell.swift */,
-				9AA2791A1EDE2BA0006D2123 /* AboutViewController.swift */,
 				9ADB276F1EF1D65F00DEE18E /* MenuTableViewController.swift */,
+				9AA2791A1EDE2BA0006D2123 /* AboutViewController.swift */,
+				9ADB27731EF32E8E00DEE18E /* Event Controllers */,
+				9ADB27721EF32E8000DEE18E /* Venue Contollers */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -190,6 +188,32 @@
 				9A9E623C1EE9FA9300AD3B4C /* Venues.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		9ADB27711EF3234C00DEE18E /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
+		9ADB27721EF32E8000DEE18E /* Venue Contollers */ = {
+			isa = PBXGroup;
+			children = (
+				9A501A1C1EDE38700075E61E /* VenueDetailViewController.swift */,
+				9A501A1E1EDE39B10075E61E /* VenueTableViewController.swift */,
+				9AE8694C1EDF41D000838657 /* VenueTableViewCell.swift */,
+			);
+			name = "Venue Contollers";
+			sourceTree = "<group>";
+		};
+		9ADB27731EF32E8E00DEE18E /* Event Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9A99C4111EE87BD800957146 /* EventsAndSchedualViewController.swift */,
+				9A9E62341EE9BFE500AD3B4C /* EventTableViewCell.swift */,
+			);
+			name = "Event Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

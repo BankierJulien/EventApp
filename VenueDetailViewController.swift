@@ -17,14 +17,14 @@ class VenueDetailViewController: UIViewController {
     @IBOutlet var venueImage: UIImageView!
     @IBOutlet var venueName: UILabel!
     @IBOutlet var venueAddress: UILabel!
-    @IBOutlet var venueNumber: UILabel!
     @IBOutlet var venueDescription: UILabel!
     @IBOutlet var imageNameLabel: UILabel!
     @IBOutlet var urlButton: UIButton!
     @IBOutlet var venueMapView: MKMapView!
-
-    var passedImage = UIImage()
-    var selectedVenue = Venues(name: "", address: "", number: "", url: "", description: "", imageString: "")
+    @IBOutlet var venueNumber: UIButton!
+    @IBOutlet var backToVenueTableViewButton: UIBarButtonItem!
+    
+    var selectedVenue = Venues(name: "", address: "", number: "", url: "", description: "", image: UIImage())
     var imageString = String()
     
     override func viewDidLoad() {
@@ -32,36 +32,48 @@ class VenueDetailViewController: UIViewController {
         self.navigationController?.title = "BK Comedy Fest Venues"
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        self.venueImage.isHidden = true
-    }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.venueImage.isHidden = false
-        self.venueImage.image = self.passedImage
+        self.venueNumber.setTitle(self.selectedVenue.number, for: .normal)
+        self.urlButton.setTitle( self.formateStringForDisplay(webString: self.selectedVenue.url), for: UIControlState.normal)
+        self.venueImage.image = self.selectedVenue.image
         self.venueName.text = self.selectedVenue.name
-        self.venueNumber.text = self.selectedVenue.number
         self.venueDescription.text = self.selectedVenue.description
         self.venueAddress.text = self.selectedVenue.address
         self.imageNameLabel.text = self.selectedVenue.name
-        self.urlButton.setTitle(self.venueName.text! + ".com", for: UIControlState.normal)
         self.setUpMapViewWithAddress(addressString: self.selectedVenue.address)
+        self.navigationController?.title = self.selectedVenue.name
+
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    //MARK: URL FUNCTIONS
+    //MARK: IBACTIONS
     @IBAction func urlButtonPressed(_ sender: UIButton) {
         let stringWithHTTPPrepended = "http://\(String(describing: self.urlButton.title(for: .normal)!))".replacingOccurrences(of:" ", with: "")
         let url = URL(string: stringWithHTTPPrepended)
         UIApplication.shared.open(url!)
     }
     
+    @IBAction func phoneNumberTapped(_ sender: UIButton) {
+        if let url = URL(string: "tel://\(self.formateStringForPhoneURL(numberString: self.selectedVenue.number))"), UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
+    
+ 
+    @IBAction func backButtonTapped(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
     //MARK : MAPVIEW FUNCTIONS
     func setUpMapViewWithAddress(addressString:String) {
-        let geocoder = CLGeocoder()
+       let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(addressString) {
             placemarks, error in
             let placemark = placemarks?.first
@@ -94,6 +106,19 @@ class VenueDetailViewController: UIViewController {
         let span = MKCoordinateSpanMake(0.1, 0.1)
         let region = MKCoordinateRegionMake(mapCenter, span)
         self.venueMapView.region = region
+    }
+    
+    //MARK: STRING FORMATING
+    
+    func formateStringForPhoneURL(numberString: String) -> String{
+        let newString = numberString.replacingOccurrences(of: "-", with: "")
+        return newString
+    }
+    
+    func formateStringForDisplay(webString: String) -> String{
+        let removeHTTP = webString.replacingOccurrences(of: "http:", with: "")
+        let newString = removeHTTP.replacingOccurrences(of: "/", with: "")
+        return newString
     }
 }
 

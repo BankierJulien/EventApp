@@ -9,11 +9,15 @@
 import UIKit
 
 class AboutViewController: UIViewController {
-
+    
+    @IBOutlet var contactUsButton: UIButton!
     @IBOutlet var menuButton: UIBarButtonItem!
     @IBOutlet var aboutTextView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
@@ -21,15 +25,17 @@ class AboutViewController: UIViewController {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         self.aboutTextView.text = AboutStrings().about
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        self.aboutTextView.backgroundColor = UIColor.black
     }
     
-
-
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    
+    @IBAction func contactUsTapped(_ sender: Any) {
+            let url = URL(string: "https://bkcomedyfestival.com/contact/")
+            UIApplication.shared.open(url!)
+    }
+    
 }

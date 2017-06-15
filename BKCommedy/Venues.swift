@@ -14,17 +14,17 @@ struct Venues {
     let number: String
     let url: String
     let description: String
-    let imageString : String
+    let image : UIImage
    // let id: Int
     //FIND A WAY TO LOAD IMAGE IN HERE
     
-    init(name: String, address: String, number: String, url: String, description: String, imageString: String) {
+    init(name: String, address: String, number: String, url: String, description: String, image: UIImage) {
         self.name = name
         self.address = address
         self.number = number
         self.url = url
         self.description = description
-        self.imageString = imageString
+        self.image = image
     }
     
    
@@ -36,7 +36,7 @@ struct Venues {
             "number": number,
             "url": url,
             "description": description,
-            "imageString": imageString
+            "image": image
         ]
     }
     
