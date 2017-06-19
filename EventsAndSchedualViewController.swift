@@ -20,10 +20,12 @@ enum day: Int {
 }
 
 class EventsAndSchedualViewController: UIViewController {
-    
-    //    @IBOutlet weak var dayPickerCollectionView: UICollectionView!
+ 
     @IBOutlet weak var eventTableView: UITableView!
     @IBOutlet weak var tabBar: UITabBar!
+    
+    @IBOutlet var dayContainerView: UIView!
+    @IBOutlet var dayContainerHeight: NSLayoutConstraint!
     
     @IBOutlet var mondayButton: UIButton!
     @IBOutlet var tuesdayButton: UIButton!
@@ -32,9 +34,9 @@ class EventsAndSchedualViewController: UIViewController {
     @IBOutlet var fridayButton: UIButton!
     @IBOutlet var saturdayButton: UIButton!
     @IBOutlet var sundayButton: UIButton!
+    
     var attendButton = UIButton()
 
-    
     var dayButtonArray = [UIButton]()
     let events = EventManager()
     var currentDayEvents = [Events]()
@@ -178,6 +180,7 @@ extension EventsAndSchedualViewController : UITabBarDelegate{
         self.removeDuplicates(array: self.myEvents)
         for event in self.myEvents{
             print(event.name)
+            //self.dayContainerHeight.constant = 0
         }
         self.eventTableView.reloadData()
     }
