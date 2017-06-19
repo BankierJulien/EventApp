@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import QuartzCore
 
 enum day: Int {
     case monday = 1
@@ -20,7 +21,7 @@ enum day: Int {
 }
 
 class EventsAndSchedualViewController: UIViewController {
- 
+    
     @IBOutlet weak var eventTableView: UITableView!
     @IBOutlet weak var tabBar: UITabBar!
     
@@ -36,7 +37,7 @@ class EventsAndSchedualViewController: UIViewController {
     @IBOutlet var sundayButton: UIButton!
     
     var attendButton = UIButton()
-
+    
     var dayButtonArray = [UIButton]()
     let events = EventManager()
     var currentDayEvents = [Events]()
@@ -48,6 +49,7 @@ class EventsAndSchedualViewController: UIViewController {
     @IBOutlet var menuButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.dayButtonArray.append(mondayButton)
         self.dayButtonArray.append(tuesdayButton)
         self.dayButtonArray.append(wednesdayButton)
@@ -55,7 +57,7 @@ class EventsAndSchedualViewController: UIViewController {
         self.dayButtonArray.append(fridayButton)
         self.dayButtonArray.append(saturdayButton)
         self.dayButtonArray.append(sundayButton)
-        
+        self.setUpButtons()
         
         // menu logic
         if self.revealViewController() != nil {
@@ -66,21 +68,18 @@ class EventsAndSchedualViewController: UIViewController {
         
         //tab bar set up
         self.tabBar.selectedItem = tabBar.items?[0]
-        
         // maybe not nessasry?
         self.tabBar.delegate = self
         self.eventTableView.delegate = self
         self.eventTableView.dataSource = self
-        
         self.currentDayEvents = self.events.mondayEvents
         
         for button in self.dayButtonArray{
             button.addTarget(self, action:#selector(didPressDayButton(sender:)), for: .touchUpInside)
         }
-    
+        
     }
     
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -95,7 +94,15 @@ class EventsAndSchedualViewController: UIViewController {
         }
         self.eventTableView.reloadData()
     }
-
+    
+    func setUpButtons(){
+        for button in self.dayButtonArray{
+            button.layer.cornerRadius = 4.0
+            button.layer.masksToBounds = true
+            button.layer.borderWidth = 1.0
+            button.layer.borderColor = UIColor.white.cgColor
+        }
+    }
 }
 
 
@@ -123,24 +130,25 @@ extension EventsAndSchedualViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! EventTableViewCell
         
-        self.attendButton = UIButton(frame: CGRect(x:0, y:0, width:50, height:50))
-        self.attendButton.setImage(#imageLiteral(resourceName: "empty"), for: .normal)
-        self.attendButton.addTarget(self, action: #selector(didPressAttendButton(sender:)), for: .touchUpInside)
-        cell.accessoryView = self.attendButton;
-        self.attendButton.tag = indexPath.row
-        
-        // MARK : MUST BE AN EASIER WAY
+//        self.attendButton = UIButton(frame: CGRect(x:0, y:0, width:30, height:30))
+//        self.attendButton.setImage(#imageLiteral(resourceName: "add"), for: .normal)
+//       // self.attendButton.backgroundColor = UIColor.white
+//        self.attendButton.addTarget(self, action: #selector(didPressAttendButton(sender:)), for: .touchUpInside)
+//      //  cell.accessoryView = self.attendButton;
+//        self.attendButton.tag = indexPath.row
         
         if self.tabBar.selectedItem?.tag == 0 {
             //def easier way to do this
-            cell.eventPerformer.text = self.currentDayEvents[indexPath.row].name
+            cell.eventPerformer.text = self.currentDayEvents[indexPath.row].headliner
+            cell.eventOpeners.text = self.currentDayEvents[indexPath.row].openers
             cell.eventTime.text = self.currentDayEvents[indexPath.row].time
             cell.eventVenue.text = self.currentDayEvents[indexPath.row].venue
             cell.eventImage.image = #imageLiteral(resourceName: "SplashPage")
         }
         else {
-            
-            cell.eventPerformer.text = self.myEvents[indexPath.row].name
+            self.attendButton.setImage(#imageLiteral(resourceName: "remove"), for: .normal)
+            cell.eventPerformer.text = self.myEvents[indexPath.row].headliner
+            cell.eventOpeners.text = self.myEvents[indexPath.row].openers
             cell.eventTime.text = self.myEvents[indexPath.row].time
             cell.eventVenue.text = self.myEvents[indexPath.row].venue
             cell.eventImage.image = #imageLiteral(resourceName: "SplashPage")
@@ -151,22 +159,53 @@ extension EventsAndSchedualViewController : UITableViewDataSource{
     
     
     func didPressAttendButton(sender:UIButton) {
-        //fix this if it dsnt work
-        
-        
-        //remove duplicates
+  
         if self.tabBar.selectedItem?.tag == 0 {
-          //  self.attendButton.setImage(#imageLiteral(resourceName: "checked"), for: .selected)
-            sender.isSelected = !sender.isSelected
-            self.myEvents.append(self.currentDayEvents[sender.tag])
+            self.attendButton.updateConstraintsIfNeeded()
+            self.addEventToSchedual(eventIndex: sender.tag)
         }
         else {
-           // self.attendButton.setImage(#imageLiteral(resourceName: "close"), for: .normal)
-            sender.isSelected = !sender.isSelected
-            self.myEvents.remove(at: sender.tag)
-            self.eventTableView.reloadData()
+            self.attendButton.setImage(#imageLiteral(resourceName: "add"), for: .normal)
+
+            self.removeEventFromSchedual(eventIndex: sender.tag)
         }
+        self.eventTableView.reloadData()
     }
+    
+    // MARK: Array Logic and User Deaults logic
+    
+    func addEventToSchedual(eventIndex: Int){
+        self.myEvents.append(self.currentDayEvents[eventIndex])
+        self.removeDupliactesFromMyEvents(array: self.myEvents)
+        self.saveArrayToUserDefaults(array: self.myEvents)
+    }
+    
+    func removeEventFromSchedual(eventIndex:Int){
+        self.myEvents.remove(at: eventIndex)
+        self.saveArrayToUserDefaults(array: self.myEvents)
+    }
+    
+    func removeDupliactesFromMyEvents(array: Array<Events>){
+        let filteredElements = self.myEvents.filterDuplicates { $0.id == $1.id }
+        self.myEvents = filteredElements
+    }
+    
+    func saveArrayToUserDefaults(array:Array<Events>){
+        let userDefaults = UserDefaults.standard
+        let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: self.myEvents)
+        userDefaults.set(encodedData, forKey: "myEvents")
+        userDefaults.synchronize()
+    }
+    
+    func loadArrayFromUserDefaults() -> Array<Events>{
+        let userDefaults = UserDefaults.standard
+        let decoded  = userDefaults.object(forKey: "myEvents") as! Data
+        let decodedArrays = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! [Events]
+        return decodedArrays
+    }
+    
+    
+    
 }
 
 //MARK : TABBAR
@@ -174,19 +213,27 @@ extension EventsAndSchedualViewController : UITableViewDataSource{
 extension EventsAndSchedualViewController : UITabBarDelegate{
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        for event in self.myEvents{
-            print(event.name)
+        
+        if item.tag != 0 {
+            let storedEvents = self.loadArrayFromUserDefaults()
+            if !storedEvents.isEmpty{
+                self.myEvents = storedEvents
+            }
+            else {
+                print("put empty thign here")
+            }
+            // animate this
+            self.dayContainerHeight.constant = 0
+            self.view.updateConstraintsIfNeeded()
         }
-        self.removeDuplicates(array: self.myEvents)
-        for event in self.myEvents{
-            print(event.name)
-            //self.dayContainerHeight.constant = 0
+        else{
+            self.dayContainerHeight.constant = 42
+            self.view.updateConstraintsIfNeeded()
         }
+        
+        
         self.eventTableView.reloadData()
     }
-    //MARK:  find a way to remove duplicates
-    func removeDuplicates(array: [Events]) {
-        for _ in array {
-        }
-    }
+    
+    
 }

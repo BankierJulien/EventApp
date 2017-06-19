@@ -17,15 +17,17 @@ struct EventManager {
     var tuesdayEvents = [Events]()
 
     // sixty One Local
-    let testEventOne = Events(name: "edy", time: "10:0", tickets: "url", venue: "sixtyOneLocal", date: "monday",  discription: "event", id: 1)
-    let testEventTwo = Events(name: "fred", time: "10:0", tickets: "url", venue: "sixtyOneLocal", date: "monday",  discription: "event", id: 2)
-    let testEventThree = Events(name: "bob", time: "doors open 10", tickets: "url", venue: "sixtyOneLocal", date: "tuesday",  discription: "event", id: 3)
+    let testEventOne = Events(headliner: "John Doe", openers: "john and friends", time: "0:0", tickets: "url", venue: "sixtyOneLocal", date: "monday",  eventDescription: "event", id: 1)
+    let testEventTwo = Events(headliner: "fred", openers: "john and friends", time: "10:0", tickets: "url", venue: "sixtyOneLocal", date: "monday",  eventDescription: "event", id: 2)
+    let testEventThree = Events(headliner: "bob", openers: "john and friends",  time: "doors open 10", tickets: "url", venue: "sixtyOneLocal", date: "tuesday",  eventDescription: "event", id: 3)
+     let testEventFour = Events(headliner: "Julien Fishburn", openers: "john and friends",  time: "doors 10", tickets: "url", venue: "blube", date: "tuesday",  eventDescription: "event", id: 4)
     
     
     init(){
         self.allEvents.append(testEventOne)
         self.allEvents.append(testEventTwo)
         self.allEvents.append(testEventThree)
+        self.allEvents.append(testEventFour)
         // make this better
         for event in self.allEvents{
             if event.date == "monday"{

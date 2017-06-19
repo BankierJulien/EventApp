@@ -12,6 +12,7 @@ class EventTableViewCell: UITableViewCell {
 
     @IBOutlet var eventImage: UIImageView!
     @IBOutlet var eventPerformer: UILabel!
+    @IBOutlet var eventOpeners: UILabel!
     @IBOutlet var eventVenue: UILabel!
     @IBOutlet var eventTime: UILabel!
     

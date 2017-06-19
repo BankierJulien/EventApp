@@ -15,8 +15,6 @@ struct Venues {
     let url: String
     let description: String
     let image : UIImage
-   // let id: Int
-    //FIND A WAY TO LOAD IMAGE IN HERE
     
     init(name: String, address: String, number: String, url: String, description: String, image: UIImage) {
         self.name = name
@@ -26,8 +24,6 @@ struct Venues {
         self.description = description
         self.image = image
     }
-    
-   
     
     func toAnyObject() -> Any {
         return [

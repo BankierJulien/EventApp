@@ -27,6 +27,7 @@
 		9AD1E4741EDE19DB007F634B /* VenueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD1E4731EDE19DB007F634B /* VenueManager.swift */; };
 		9ADB27701EF1D65F00DEE18E /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB276F1EF1D65F00DEE18E /* MenuTableViewController.swift */; };
 		9AE8694D1EDF41D000838657 /* VenueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE8694C1EDF41D000838657 /* VenueTableViewCell.swift */; };
+		9AF187F61EF85E77002A30E8 /* filterDuplicatesArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF187F51EF85E77002A30E8 /* filterDuplicatesArrayExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		9AD1E4731EDE19DB007F634B /* VenueManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueManager.swift; sourceTree = "<group>"; };
 		9ADB276F1EF1D65F00DEE18E /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		9AE8694C1EDF41D000838657 /* VenueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueTableViewCell.swift; sourceTree = "<group>"; };
+		9AF187F51EF85E77002A30E8 /* filterDuplicatesArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = filterDuplicatesArrayExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 				9A1809EF1ED3770F005F4F0E /* RootViewController.swift */,
 				9ADB276F1EF1D65F00DEE18E /* MenuTableViewController.swift */,
 				9AA2791A1EDE2BA0006D2123 /* AboutViewController.swift */,
+				9AF187F51EF85E77002A30E8 /* filterDuplicatesArrayExtension.swift */,
 				9ADB27731EF32E8E00DEE18E /* Event Controllers */,
 				9ADB27721EF32E8000DEE18E /* Venue Contollers */,
 			);
@@ -365,6 +368,7 @@
 				9A9E623B1EE9C8D400AD3B4C /* EventManager.swift in Sources */,
 				9A501A1F1EDE39B10075E61E /* VenueTableViewController.swift in Sources */,
 				9AD1E4741EDE19DB007F634B /* VenueManager.swift in Sources */,
+				9AF187F61EF85E77002A30E8 /* filterDuplicatesArrayExtension.swift in Sources */,
 				9A501A1D1EDE38700075E61E /* VenueDetailViewController.swift in Sources */,
 				9A9E623D1EE9FA9400AD3B4C /* Venues.swift in Sources */,
 				9A3CDDA91EE753E800DC283C /* SWRevealViewController.m in Sources */,
