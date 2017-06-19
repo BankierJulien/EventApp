@@ -120,22 +120,20 @@ class EventsAndSchedualViewController: UIViewController {
             }
             
         }
-        print(textMessage)
         return textMessage
-
     }
     
     @IBAction func textSchedualPressed(_ sender: Any) {
-     /*   if MFMessageComposeViewController.canSendText() == true {
+        if MFMessageComposeViewController.canSendText() == true {
             let messageController = MFMessageComposeViewController()
             messageController.messageComposeDelegate  = self
             messageController.body = self.formateEventsForText()
             self.present(messageController, animated: true, completion: nil)
         } else {
+            print("failed")
             //pop up alert not cant send message
             //handle text messaging not available
-        }*/
-        self.formateEventsForText()
+        }
     }
  
 
