@@ -38,4 +38,6 @@ class AboutViewController: UIViewController {
             UIApplication.shared.open(url!)
     }
     
+
+    
 }

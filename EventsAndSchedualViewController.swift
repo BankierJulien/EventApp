@@ -8,6 +8,7 @@
 
 import UIKit
 import QuartzCore
+import MessageUI
 
 enum day: Int {
     case monday = 1
@@ -35,18 +36,19 @@ class EventsAndSchedualViewController: UIViewController {
     @IBOutlet var fridayButton: UIButton!
     @IBOutlet var saturdayButton: UIButton!
     @IBOutlet var sundayButton: UIButton!
-    
-    var attendButton = UIButton()
-    
-    var dayButtonArray = [UIButton]()
-    let events = EventManager()
-    var currentDayEvents = [Events]()
-    var myEvents = [Events]()
+    @IBOutlet var menuButton: UIBarButtonItem!
+
+  
     // MARK : add events to your scehdaul, see them based on day, go to detail view of event, buy tickets from site if indiviually bought, empty message + animations if nothing there,
     
     //MARK : TO DO : add all functionaltiy here, make setial view for events, add animating sponsers on menu, add log in? ( but why) , persists choices, add map view to venue, find a way to scrapper it? figure out image loading
     
-    @IBOutlet var menuButton: UIBarButtonItem!
+    var attendButton = UIButton()
+    var dayButtonArray = [UIButton]()
+    let events = EventManager()
+    var currentDayEvents = [Events]()
+    var myEvents = [Events]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -103,6 +105,40 @@ class EventsAndSchedualViewController: UIViewController {
             button.layer.borderColor = UIColor.white.cgColor
         }
     }
+    
+    func formateEventsForText() -> String{
+        var textMessage = String()
+        let introString = "Hey, this is my schedual for the BK Comedy Festival, check it out:\n\n"
+        if self.myEvents.isEmpty{
+            print("tell them to add events")
+        }
+        else {
+            textMessage.append(introString)
+            for event in self.myEvents{
+                let eventString = String(format:"%@ with %@ at %@ from %@ on %@ \n\n\n", event.headliner, event.openers, event.venue, event.time, event.date)
+                textMessage.append(eventString)
+            }
+            
+        }
+        print(textMessage)
+        return textMessage
+
+    }
+    
+    @IBAction func textSchedualPressed(_ sender: Any) {
+     /*   if MFMessageComposeViewController.canSendText() == true {
+            let messageController = MFMessageComposeViewController()
+            messageController.messageComposeDelegate  = self
+            messageController.body = self.formateEventsForText()
+            self.present(messageController, animated: true, completion: nil)
+        } else {
+            //pop up alert not cant send message
+            //handle text messaging not available
+        }*/
+        self.formateEventsForText()
+    }
+ 
+
 }
 
 
@@ -130,12 +166,12 @@ extension EventsAndSchedualViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! EventTableViewCell
         
-//        self.attendButton = UIButton(frame: CGRect(x:0, y:0, width:30, height:30))
-//        self.attendButton.setImage(#imageLiteral(resourceName: "add"), for: .normal)
-//       // self.attendButton.backgroundColor = UIColor.white
-//        self.attendButton.addTarget(self, action: #selector(didPressAttendButton(sender:)), for: .touchUpInside)
-//      //  cell.accessoryView = self.attendButton;
-//        self.attendButton.tag = indexPath.row
+        self.attendButton = UIButton(frame: CGRect(x:0, y:0, width:30, height:30))
+        self.attendButton.setImage(#imageLiteral(resourceName: "add"), for: .normal)
+       // self.attendButton.backgroundColor = UIColor.white
+        self.attendButton.addTarget(self, action: #selector(didPressAttendButton(sender:)), for: .touchUpInside)
+        cell.accessoryView = self.attendButton;
+        self.attendButton.tag = indexPath.row
         
         if self.tabBar.selectedItem?.tag == 0 {
             //def easier way to do this
@@ -204,6 +240,23 @@ extension EventsAndSchedualViewController : UITableViewDataSource{
         return decodedArrays
     }
     
+    func keyExists(userDefaultsKey: String) -> Bool {
+        return UserDefaults.standard.object(forKey: userDefaultsKey) != nil
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showEventDetail" {
+            let detailVC = segue.destination as! EventDetailViewController
+            let indexPath = self.eventTableView.indexPathForSelectedRow!
+            let row = indexPath.row
+            if self.tabBar.selectedItem?.tag == 0{
+                detailVC.selectedEvent = self.currentDayEvents[row]
+            }
+            else {
+                detailVC.selectedEvent = self.myEvents[row]
+            }
+        }
+    }
     
     
 }
@@ -215,10 +268,13 @@ extension EventsAndSchedualViewController : UITabBarDelegate{
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         
         if item.tag != 0 {
-            let storedEvents = self.loadArrayFromUserDefaults()
-            if !storedEvents.isEmpty{
-                self.myEvents = storedEvents
+            if self.keyExists(userDefaultsKey: "myEvents"){
+                let storedEvents = self.loadArrayFromUserDefaults()
+                if !storedEvents.isEmpty{
+                    self.myEvents = storedEvents
+                }
             }
+           
             else {
                 print("put empty thign here")
             }
@@ -230,10 +286,30 @@ extension EventsAndSchedualViewController : UITabBarDelegate{
             self.dayContainerHeight.constant = 42
             self.view.updateConstraintsIfNeeded()
         }
-        
-        
         self.eventTableView.reloadData()
     }
     
+}
+
+extension EventsAndSchedualViewController : MFMessageComposeViewControllerDelegate{
+    // A wrapper function to indicate whether or not a text message can be sent from the user's device
+    func canSendText() -> Bool {
+        return MFMessageComposeViewController.canSendText()
+    }
+    
+    // Configures and returns a MFMessageComposeViewController instance
+    func configuredMessageComposeViewController() -> MFMessageComposeViewController {
+        let messageComposeVC = MFMessageComposeViewController()
+        messageComposeVC.messageComposeDelegate = self  //  Make sure to set this property to self, so that the controller can be dismissed!
+       // messageComposeVC.recipients = textMessageRecipients
+        messageComposeVC.body = "Hey friend - Just sending a text message in-app using Swift!"
+        return messageComposeVC
+    }
+    
+    // MFMessageComposeViewControllerDelegate callback - dismisses the view controller when the user is finished with it
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+  
     
 }

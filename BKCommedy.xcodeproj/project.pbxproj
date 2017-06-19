@@ -28,6 +28,7 @@
 		9ADB27701EF1D65F00DEE18E /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB276F1EF1D65F00DEE18E /* MenuTableViewController.swift */; };
 		9AE8694D1EDF41D000838657 /* VenueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE8694C1EDF41D000838657 /* VenueTableViewCell.swift */; };
 		9AF187F61EF85E77002A30E8 /* filterDuplicatesArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF187F51EF85E77002A30E8 /* filterDuplicatesArrayExtension.swift */; };
+		9AF187F81EF8824C002A30E8 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF187F71EF8824C002A30E8 /* EventDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		9ADB276F1EF1D65F00DEE18E /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		9AE8694C1EDF41D000838657 /* VenueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueTableViewCell.swift; sourceTree = "<group>"; };
 		9AF187F51EF85E77002A30E8 /* filterDuplicatesArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = filterDuplicatesArrayExtension.swift; sourceTree = "<group>"; };
+		9AF187F71EF8824C002A30E8 /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +217,7 @@
 			children = (
 				9A99C4111EE87BD800957146 /* EventsAndSchedualViewController.swift */,
 				9A9E62341EE9BFE500AD3B4C /* EventTableViewCell.swift */,
+				9AF187F71EF8824C002A30E8 /* EventDetailViewController.swift */,
 			);
 			name = "Event Controllers";
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				9A501A1D1EDE38700075E61E /* VenueDetailViewController.swift in Sources */,
 				9A9E623D1EE9FA9400AD3B4C /* Venues.swift in Sources */,
 				9A3CDDA91EE753E800DC283C /* SWRevealViewController.m in Sources */,
+				9AF187F81EF8824C002A30E8 /* EventDetailViewController.swift in Sources */,
 				9AA2791B1EDE2BA0006D2123 /* AboutViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -105,10 +105,12 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bOA-1s-4mb">
                                         <rect key="frame" x="37" y="3" width="36" height="36"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="36" id="bq9-fc-fKa"/>
                                             <constraint firstAttribute="height" constant="36" id="xu7-9F-eHC"/>
                                         </constraints>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="MON"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yin-56-bct">
@@ -259,6 +261,7 @@
                                             <outlet property="eventPerformer" destination="ud2-y2-2wE" id="Tng-TB-6bT"/>
                                             <outlet property="eventTime" destination="F27-u8-4Fa" id="6AP-MZ-44G"/>
                                             <outlet property="eventVenue" destination="VsT-dq-7Fe" id="dnh-Xl-2Va"/>
+                                            <segue destination="Y9p-qF-MhC" kind="show" identifier="showEventDetail" id="JON-ny-TDc"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -281,6 +284,11 @@
                     <navigationItem key="navigationItem" id="vnd-iE-blt">
                         <barButtonItem key="leftBarButtonItem" image="HamburgerMenuItem" id="yJw-yi-9Wa">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="TextFriends" id="rog-d2-nyC">
+                            <connections>
+                                <action selector="textSchedualPressed:" destination="rKz-Og-BwP" id="eEF-ED-aaU"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -305,7 +313,7 @@
         <!--Event Detail View-->
         <scene sceneID="sr4-r0-zw2">
             <objects>
-                <viewController id="Y9p-qF-MhC" userLabel="Event Detail View" sceneMemberID="viewController">
+                <viewController id="Y9p-qF-MhC" userLabel="Event Detail View" customClass="EventDetailViewController" customModule="BKCommedy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dUh-ZO-mp8"/>
                         <viewControllerLayoutGuide type="bottom" id="C3r-0d-mbT"/>
@@ -313,12 +321,67 @@
                     <view key="view" contentMode="scaleToFill" id="FHx-0s-Raa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b2C-Sf-4AS">
+                                <rect key="frame" x="0.0" y="64" width="375" height="171"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Headliner" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nhg-dD-hU6">
+                                <rect key="frame" x="150" y="243" width="74" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Openers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yy3-H5-gwU">
+                                <rect key="frame" x="154" y="272" width="66" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Venue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QgT-RT-wPT">
+                                <rect key="frame" x="16" y="323" width="175" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wWs-lr-BCb">
+                                <rect key="frame" x="199" y="323" width="160" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="blurb" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WTz-cN-4xx">
+                                <rect key="frame" x="69" y="352" width="237" height="120"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mW3-EI-3GJ">
+                                <rect key="frame" x="147" y="480" width="80" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Buy Tickets"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="buyTicketsButton" destination="mW3-EI-3GJ" id="6ec-Hv-Buy"/>
+                        <outlet property="eventDescriptionLabel" destination="WTz-cN-4xx" id="Nwn-pb-1gR"/>
+                        <outlet property="eventHeadlingerLabel" destination="Nhg-dD-hU6" id="teV-pq-ums"/>
+                        <outlet property="eventImageView" destination="b2C-Sf-4AS" id="fFo-Oi-QIH"/>
+                        <outlet property="eventOpenersLabel" destination="yy3-H5-gwU" id="RQm-Ae-JyQ"/>
+                        <outlet property="eventTimeLabel" destination="wWs-lr-BCb" id="Ekt-ao-cRU"/>
+                        <outlet property="eventVenueLabel" destination="QgT-RT-wPT" id="1Jc-Wg-KcJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k6Z-EP-1mf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1842" y="-296"/>
+            <point key="canvasLocation" x="1981.5999999999999" y="-290.10494752623691"/>
         </scene>
         <!--Venue List-->
         <scene sceneID="WU5-hd-DIL">
@@ -401,7 +464,7 @@
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="about burlb     faq       contact button   MUST CREDIT AUTHORS AND PHTORGRAPHERS ETC&gt;&gt;&gt;" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VW4-gy-RZo">
                                 <rect key="frame" x="0.0" y="239" width="375" height="387"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -516,7 +579,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="fsc-LQ-px8" secondAttribute="trailing" id="0Tk-M7-DY5"/>
                             <constraint firstItem="zUe-VS-f0k" firstAttribute="top" secondItem="DdE-hG-axA" secondAttribute="bottom" constant="8" id="2Rl-gj-zN2"/>
