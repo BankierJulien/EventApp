@@ -11,13 +11,13 @@ import QuartzCore
 import MessageUI
 
 enum day: Int {
-    case monday = 1
-    case tuesday = 2
-    case wednesday = 3
-    case thursday = 4
-    case friday = 5
-    case saturday = 6
-    case sunday = 7
+    case monday = 0
+    case tuesday = 1
+    case wednesday = 2
+    case thursday = 3
+    case friday = 4
+    case saturday = 5
+    case sunday = 6
     
 }
 // colors https://medium.com/compileswift/a-smart-way-to-manage-colours-schemes-for-ios-applications-development-923ef976be55
@@ -26,17 +26,8 @@ class EventsAndSchedualViewController: UIViewController {
     
     @IBOutlet weak var eventTableView: UITableView!
     @IBOutlet weak var tabBar: UITabBar!
-    
-    @IBOutlet var dayContainerView: UIView!
     @IBOutlet var dayContainerHeight: NSLayoutConstraint!
-    
-    @IBOutlet var mondayButton: UIButton!
-    @IBOutlet var tuesdayButton: UIButton!
-    @IBOutlet var wednesdayButton: UIButton!
-    @IBOutlet var thursdayButton: UIButton!
-    @IBOutlet var fridayButton: UIButton!
-    @IBOutlet var saturdayButton: UIButton!
-    @IBOutlet var sundayButton: UIButton!
+    @IBOutlet var dayCollectionView: UICollectionView!
     @IBOutlet var menuButton: UIBarButtonItem!
     @IBOutlet var uploadButton: UIBarButtonItem!
 
@@ -44,7 +35,8 @@ class EventsAndSchedualViewController: UIViewController {
     // MARK : add events to your scehdaul, see them based on day, go to detail view of event, buy tickets from site if indiviually bought, empty message + animations if nothing there,
     
     //MARK : TO DO : add all functionaltiy here, make setial view for events, add animating sponsers on menu, add log in? ( but why) , persists choices, add map view to venue, find a way to scrapper it? figure out image loading
-    
+//    var dayDictionary = Dictionary<String, [Events]>()
+    let arrayOfDays = ["Mon","Tue","Wed", "Thur", "Fri", "Sat", "Sun"]
     var attendButton = UIButton()
     var dayButtonArray = [UIButton]()
     let events = EventManager()
@@ -53,16 +45,7 @@ class EventsAndSchedualViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.dayButtonArray.append(mondayButton)
-        self.dayButtonArray.append(tuesdayButton)
-        self.dayButtonArray.append(wednesdayButton)
-        self.dayButtonArray.append(thursdayButton)
-        self.dayButtonArray.append(fridayButton)
-        self.dayButtonArray.append(saturdayButton)
-        self.dayButtonArray.append(sundayButton)
-        self.setUpButtons()
-   
+
         // menu logic
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
@@ -77,40 +60,15 @@ class EventsAndSchedualViewController: UIViewController {
         self.eventTableView.delegate = self
         self.eventTableView.dataSource = self
         self.currentDayEvents = self.events.mondayEvents
-        
-        for button in self.dayButtonArray{
-            button.addTarget(self, action:#selector(didPressDayButton(sender:)), for: .touchUpInside)
-        }
-        
+        self.dayCollectionView.dataSource = self
+        self.dayCollectionView.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func didPressDayButton(sender:UIButton) {
-        if sender == self.mondayButton{
-            self.mondayButton.backgroundColor = UIColor(red: 200/255, green: 64/255, blue: 50/255, alpha: 1.0)
 
-            self.currentDayEvents = self.events.mondayEvents
-        }
-        else if sender == self.tuesdayButton{
-            self.currentDayEvents = self.events.tuesdayEvents
-        }
-        self.eventTableView.reloadData()
-    }
-    
-    func setUpButtons(){
-        for button in self.dayButtonArray{
-            button.layer.cornerRadius = 1.0
-            button.layer.masksToBounds = true
-            button.layer.borderWidth = 1.0
-            button.layer.borderColor = UIColor.white.cgColor
-//            button.layer.backgroundColor = UIColor(red: 200, green: 64, blue: 50, alpha: 1.0)
-        }
-    }
-    
     func formateEventsForText() -> String{
         var textMessage = String()
         let introString = "Hey, this is my schedual for the BK Comedy Festival, check it out:\n\n"
@@ -134,14 +92,14 @@ class EventsAndSchedualViewController: UIViewController {
             messageController.messageComposeDelegate  = self
             messageController.body = self.formateEventsForText()
             self.present(messageController, animated: true, completion: nil)
-        } else {
+        }
+        else {
             print("failed")
             //pop up alert not cant send message
             //handle text messaging not available
         }
     }
- 
-
+    
 }
 
 
@@ -260,16 +218,12 @@ extension EventsAndSchedualViewController : UITableViewDataSource{
             }
         }
     }
-    
-    
 }
 
 //MARK : TABBAR
 
 extension EventsAndSchedualViewController : UITabBarDelegate{
-    
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        
         if item.tag != 0 {
             if self.keyExists(userDefaultsKey: "myEvents"){
                 let storedEvents = self.loadArrayFromUserDefaults()
@@ -277,7 +231,6 @@ extension EventsAndSchedualViewController : UITabBarDelegate{
                     self.myEvents = storedEvents
                 }
             }
-           
             else {
                 print("put empty thign here")
             }
@@ -285,7 +238,6 @@ extension EventsAndSchedualViewController : UITabBarDelegate{
             UIView.animate(withDuration: 2.0, animations: {
                 self.dayContainerHeight.constant = 0
                 self.view.updateConstraintsIfNeeded()
-
             })
         }
         else{
@@ -296,28 +248,94 @@ extension EventsAndSchedualViewController : UITabBarDelegate{
         }
         self.eventTableView.reloadData()
     }
-    
 }
 
 extension EventsAndSchedualViewController : MFMessageComposeViewControllerDelegate{
-    // A wrapper function to indicate whether or not a text message can be sent from the user's device
-    func canSendText() -> Bool {
-        return MFMessageComposeViewController.canSendText()
-    }
-    
-    // Configures and returns a MFMessageComposeViewController instance
-    func configuredMessageComposeViewController() -> MFMessageComposeViewController {
-        let messageComposeVC = MFMessageComposeViewController()
-        messageComposeVC.messageComposeDelegate = self  //  Make sure to set this property to self, so that the controller can be dismissed!
-       // messageComposeVC.recipients = textMessageRecipients
-        messageComposeVC.body = "Hey friend - Just sending a text message in-app using Swift!"
-        return messageComposeVC
-    }
-    
+//    // A wrapper function to indicate whether or not a text message can be sent from the user's device
+//    func canSendText() -> Bool {
+//        return MFMessageComposeViewController.canSendText()
+//    }
+//    
+//    // Configures and returns a MFMessageComposeViewController instance
+//    func configuredMessageComposeViewController() -> MFMessageComposeViewController {
+//        let messageComposeVC = MFMessageComposeViewController()
+//        messageComposeVC.messageComposeDelegate = self  //  Make sure to set this property to self, so that the controller can be dismissed!
+//        return messageComposeVC
+//    }
+//    
     // MFMessageComposeViewControllerDelegate callback - dismisses the view controller when the user is finished with it
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         controller.dismiss(animated: true, completion: nil)
     }
-  
+}
+
+extension EventsAndSchedualViewController: UICollectionViewDelegate {
+    
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell  = collectionView.cellForItem(at: indexPath as IndexPath)!
+        cell.backgroundColor = UIColor(red: 200/255, green: 64/255, blue: 50/255, alpha: 1.0)
+        
+        switch indexPath.row {
+        case day.monday.rawValue:
+            self.currentDayEvents = self.events.mondayEvents
+            break
+            
+        case day.tuesday.rawValue:
+            self.currentDayEvents = self.events.tuesdayEvents
+            break
+            
+        case day.wednesday.rawValue:
+            self.currentDayEvents = self.events.wednesdayEvents
+            break
+            
+        case day.thursday.rawValue:
+            self.currentDayEvents = self.events.thursdayEvents
+            break
+            
+        case day.friday.rawValue:
+            self.currentDayEvents = self.events.thursdayEvents
+            break
+            
+        case day.saturday.rawValue:
+            self.currentDayEvents = self.events.thursdayEvents
+            break
+            
+        case day.sunday.rawValue:
+            self.currentDayEvents = self.events.thursdayEvents
+            break
+            
+        default:
+            self.currentDayEvents = self.events.mondayEvents
+            break
+        }
+        
+        self.eventTableView.reloadData()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell  = collectionView.cellForItem(at: indexPath as IndexPath)!
+        cell.backgroundColor = UIColor.lightGray
+    }
+}
+
+extension EventsAndSchedualViewController: UICollectionViewDataSource {
+    
+     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"dayCell", for: indexPath) as! DayCollectionViewCell
+        cell.dayLabel.text = arrayOfDays[indexPath.row]
+        cell.backgroundColor = UIColor(red: 200/255, green: 64/255, blue: 50/255, alpha: 1.0)
+        cell.layer.cornerRadius = 2.0
+        cell.layer.borderWidth = 1.0
+        cell.layer.borderColor = UIColor.white.cgColor
+        cell.layer.masksToBounds = true
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return self.dayDictionary.count
+        return self.arrayOfDays.count
+    }
     
 }
+

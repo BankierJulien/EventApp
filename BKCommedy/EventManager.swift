@@ -15,6 +15,13 @@ struct EventManager {
     var allEvents = [Events]()
     var mondayEvents = [Events]()
     var tuesdayEvents = [Events]()
+    var wednesdayEvents = [Events]()
+    var thursdayEvents = [Events]()
+    var fridayEvents = [Events]()
+    var saturdayEvents = [Events]()
+    var sundayEvents = [Events]()
+
+
 
     // sixty One Local
     let testEventOne = Events(headliner: "John Doe",
