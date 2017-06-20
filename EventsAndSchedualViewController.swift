@@ -127,12 +127,12 @@ extension EventsAndSchedualViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! EventTableViewCell
         
-//        self.attendButton = UIButton(frame: CGRect(x:0, y:0, width:30, height:30))
-//        self.attendButton.setImage(#imageLiteral(resourceName: "add"), for: .normal)
-//       // self.attendButton.backgroundColor = UIColor.white
-//        self.attendButton.addTarget(self, action: #selector(didPressAttendButton(sender:)), for: .touchUpInside)
-//        cell.accessoryView = self.attendButton;
-//        self.attendButton.tag = indexPath.row
+        self.attendButton = UIButton(frame: CGRect(x:0, y:0, width:20, height:20))
+        self.attendButton.setImage(#imageLiteral(resourceName: "remove"), for: .normal)
+       // self.attendButton.backgroundColor = UIColor.white
+        self.attendButton.addTarget(self, action: #selector(didPressAttendButton(sender:)), for: .touchUpInside)
+        cell.accessoryView = self.attendButton;
+        self.attendButton.tag = indexPath.row
         
         if self.tabBar.selectedItem?.tag == 0 {
             //def easier way to do this
@@ -158,7 +158,7 @@ extension EventsAndSchedualViewController : UITableViewDataSource{
     func didPressAttendButton(sender:UIButton) {
   
         if self.tabBar.selectedItem?.tag == 0 {
-            self.attendButton.updateConstraintsIfNeeded()
+            //self.attendButton.updateConstraintsIfNeeded()
             self.addEventToSchedual(eventIndex: sender.tag)
         }
         else {

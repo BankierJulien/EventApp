@@ -51,7 +51,7 @@ struct EventManager {
                               venue: "sixtyOneLocal",
                               date: "monday",
                               eventDescription: "event",
-                              id: 2,
+                              id: 3,
                               eventImage: #imageLiteral(resourceName: "events") )
     
     let testEventfive = Events(headliner: "fred",
@@ -61,7 +61,7 @@ struct EventManager {
                               venue: "sixtyOneLocal",
                               date: "monday",
                               eventDescription: "event",
-                              id: 2,
+                              id: 4,
                               eventImage: #imageLiteral(resourceName: "about") )
     
     let testEventThree = Events(headliner: "bob",
@@ -71,7 +71,7 @@ struct EventManager {
                                 venue: "sixtyOneLocal",
                                 date: "tuesday",
                                 eventDescription: "event",
-                                id: 3,
+                                id: 5,
                                 eventImage:#imageLiteral(resourceName: "matchlessImage") )
     
      let testEventFour = Events(headliner: "Julien Fishburn",
@@ -81,7 +81,7 @@ struct EventManager {
                                 venue: "blube",
                                 date: "tuesday",
                                 eventDescription: "event",
-                                id: 4,
+                                id: 6,
                                 eventImage: #imageLiteral(resourceName: "bellhouseImage"))
     
     
