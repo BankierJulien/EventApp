@@ -16,7 +16,7 @@ class MenuTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         _ = Timer.scheduledTimer(timeInterval: 10, target: self,  selector: (#selector(fadeImage)), userInfo: nil, repeats: true)
+         _ = Timer.scheduledTimer(timeInterval: 3, target: self,  selector:(#selector(fadeImage)), userInfo: nil, repeats: true)
     }
 
     override func didReceiveMemoryWarning() {

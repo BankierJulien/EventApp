@@ -20,6 +20,7 @@ enum day: Int {
     case sunday = 7
     
 }
+// colors https://medium.com/compileswift/a-smart-way-to-manage-colours-schemes-for-ios-applications-development-923ef976be55
 
 class EventsAndSchedualViewController: UIViewController {
     
@@ -61,8 +62,7 @@ class EventsAndSchedualViewController: UIViewController {
         self.dayButtonArray.append(saturdayButton)
         self.dayButtonArray.append(sundayButton)
         self.setUpButtons()
-        
-        
+   
         // menu logic
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
@@ -91,6 +91,8 @@ class EventsAndSchedualViewController: UIViewController {
     
     func didPressDayButton(sender:UIButton) {
         if sender == self.mondayButton{
+            self.mondayButton.backgroundColor = UIColor(red: 200/255, green: 64/255, blue: 50/255, alpha: 1.0)
+
             self.currentDayEvents = self.events.mondayEvents
         }
         else if sender == self.tuesdayButton{
@@ -101,10 +103,11 @@ class EventsAndSchedualViewController: UIViewController {
     
     func setUpButtons(){
         for button in self.dayButtonArray{
-            button.layer.cornerRadius = 4.0
+            button.layer.cornerRadius = 1.0
             button.layer.masksToBounds = true
             button.layer.borderWidth = 1.0
             button.layer.borderColor = UIColor.white.cgColor
+//            button.layer.backgroundColor = UIColor(red: 200, green: 64, blue: 50, alpha: 1.0)
         }
     }
     
@@ -279,11 +282,16 @@ extension EventsAndSchedualViewController : UITabBarDelegate{
                 print("put empty thign here")
             }
             // animate this
-            self.dayContainerHeight.constant = 0
-            self.view.updateConstraintsIfNeeded()
+            UIView.animate(withDuration: 2.0, animations: {
+                self.dayContainerHeight.constant = 0
+                self.view.updateConstraintsIfNeeded()
+
+            })
         }
         else{
-            self.dayContainerHeight.constant = 42
+            UIView.animate(withDuration: 1.0, animations: {
+                self.dayContainerHeight.constant = 60
+            })
             self.view.updateConstraintsIfNeeded()
         }
         self.eventTableView.reloadData()

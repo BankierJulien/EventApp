@@ -37,6 +37,26 @@ struct EventManager {
                               id: 2,
                               eventImage: #imageLiteral(resourceName: "annoyanceImage") )
     
+    let testEventsix = Events(headliner: "fred",
+                              openers: "john and friends",
+                              time: "10:0",
+                              tickets: "url",
+                              venue: "sixtyOneLocal",
+                              date: "monday",
+                              eventDescription: "event",
+                              id: 2,
+                              eventImage: #imageLiteral(resourceName: "events") )
+    
+    let testEventfive = Events(headliner: "fred",
+                              openers: "john and friends",
+                              time: "10:0",
+                              tickets: "url",
+                              venue: "sixtyOneLocal",
+                              date: "monday",
+                              eventDescription: "event",
+                              id: 2,
+                              eventImage: #imageLiteral(resourceName: "about") )
+    
     let testEventThree = Events(headliner: "bob",
                                 openers: "john and friends",
                                 time: "doors open 10",
@@ -63,6 +83,8 @@ struct EventManager {
         self.allEvents.append(testEventTwo)
         self.allEvents.append(testEventThree)
         self.allEvents.append(testEventFour)
+        self.allEvents.append(testEventfive)
+        self.allEvents.append(testEventsix)
         // make this better
         for event in self.allEvents{
             if event.date == "monday"{
