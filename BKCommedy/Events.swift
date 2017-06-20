@@ -18,9 +18,11 @@ class Events: NSObject, NSCoding {
     let date: String
     let eventDescription : String
     let id: Int
+    let eventImage : UIImage
+
     
     
-    init(headliner: String, openers: String ,time: String, tickets: String, venue: String, date: String, eventDescription: String, key: String = "", id: Int) {
+    init(headliner: String, openers: String ,time: String, tickets: String, venue: String, date: String, eventDescription: String, id: Int, eventImage: UIImage) {
         self.headliner = headliner
         self.openers = openers
         self.time = time
@@ -29,6 +31,7 @@ class Events: NSObject, NSCoding {
         self.date = date
         self.eventDescription = eventDescription
         self.id = id
+        self.eventImage = eventImage
     }
     
     func toAnyObject() -> Any {
@@ -40,10 +43,12 @@ class Events: NSObject, NSCoding {
             "venue": venue,
             "date": date,
             "eventDescription": eventDescription,
-            "id" : id
+            "id" : id,
+            "eventImage" : eventImage
         ]
     }
     
+    // MARK: decoding images
     required convenience init(coder aDecoder: NSCoder) {
         let headliner = aDecoder.decodeObject(forKey: "headliner") as! String
         let openers = aDecoder.decodeObject(forKey: "openers") as! String
@@ -52,9 +57,11 @@ class Events: NSObject, NSCoding {
         let venue = aDecoder.decodeObject(forKey: "venue") as! String
         let date = aDecoder.decodeObject(forKey: "date") as! String
         let eventDescription = aDecoder.decodeObject(forKey: "eventDescription") as! String
-        let id = aDecoder.decodeInteger(forKey: "id") 
+        let id = aDecoder.decodeInteger(forKey: "id")
+        let eventImage = aDecoder.decodeObject(forKey: "eventImage") as! UIImage
 
-        self.init(headliner: headliner, openers: openers, time: time, tickets: tickets, venue: venue, date: date, eventDescription: eventDescription, id: id)
+
+        self.init(headliner: headliner, openers: openers, time: time, tickets: tickets, venue: venue, date: date, eventDescription: eventDescription, id: id, eventImage: eventImage)
 
     }
     
@@ -67,6 +74,7 @@ class Events: NSObject, NSCoding {
         aCoder.encode(date, forKey: "date")
         aCoder.encode(eventDescription, forKey: "eventDescription")
         aCoder.encode(id, forKey: "id")
+        aCoder.encode(eventImage, forKey: "eventImage")
     }
     
     override func isEqual(_ object: Any?) -> Bool {

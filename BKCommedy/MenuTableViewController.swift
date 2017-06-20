@@ -10,8 +10,13 @@ import UIKit
 
 class MenuTableViewController: UITableViewController {
 
+    @IBOutlet var sponsersImageView: UIImageView!
+    var index = 0
+    var sponserImageArray = [#imageLiteral(resourceName: "leafly"), #imageLiteral(resourceName: "ifc"), #imageLiteral(resourceName: "iceBreakers"), #imageLiteral(resourceName: "theWilliamVale"), #imageLiteral(resourceName: "826NYC"), #imageLiteral(resourceName: "marbles"), #imageLiteral(resourceName: "sixPoint")]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+         _ = Timer.scheduledTimer(timeInterval: 10, target: self,  selector: (#selector(fadeImage)), userInfo: nil, repeats: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,5 +39,12 @@ class MenuTableViewController: UITableViewController {
             headerView.addSubview(titleLabel)
         }
         return headerView
+    }
+    
+
+    func fadeImage() {
+        index = index < self.sponserImageArray.count - 1 ? index + 1: 0
+        self.sponsersImageView.image = self.sponserImageArray[index]
+        self.sponsersImageView.slideInFromRight()
     }
 }

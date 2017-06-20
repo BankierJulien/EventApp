@@ -18,9 +18,7 @@ class EventDetailViewController: UIViewController {
     @IBOutlet var eventImageView: UIImageView!
     @IBOutlet var buyTicketsButton: UIButton!
     
-     var selectedEvent = Events(headliner: "", openers: "", time: "", tickets: "", venue: "", date: "", eventDescription: "", id: 0)
-    
-    
+    var selectedEvent = Events(headliner: "", openers: "", time: "", tickets: "", venue: "", date: "", eventDescription: "", id: 0, eventImage: UIImage())
     
     
     override func viewDidLoad() {
@@ -29,6 +27,11 @@ class EventDetailViewController: UIViewController {
          self.navigationController?.title = "BK Comedy Fest Venues"
         
         self.eventHeadlingerLabel.text = selectedEvent.headliner
+        self.eventOpenersLabel.text = selectedEvent.openers
+        self.eventVenueLabel.text = selectedEvent.venue
+        self.eventTimeLabel.text = selectedEvent.time
+        self.eventDescriptionLabel.text = selectedEvent.eventDescription
+        self.eventImageView.image = selectedEvent.eventImage
         
         let gradient: CAGradientLayer = CAGradientLayer()
         
@@ -46,17 +49,5 @@ class EventDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-  
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -37,6 +37,7 @@ class EventsAndSchedualViewController: UIViewController {
     @IBOutlet var saturdayButton: UIButton!
     @IBOutlet var sundayButton: UIButton!
     @IBOutlet var menuButton: UIBarButtonItem!
+    @IBOutlet var uploadButton: UIBarButtonItem!
 
   
     // MARK : add events to your scehdaul, see them based on day, go to detail view of event, buy tickets from site if indiviually bought, empty message + animations if nothing there,
@@ -60,6 +61,7 @@ class EventsAndSchedualViewController: UIViewController {
         self.dayButtonArray.append(saturdayButton)
         self.dayButtonArray.append(sundayButton)
         self.setUpButtons()
+        
         
         // menu logic
         if self.revealViewController() != nil {
@@ -164,12 +166,12 @@ extension EventsAndSchedualViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! EventTableViewCell
         
-        self.attendButton = UIButton(frame: CGRect(x:0, y:0, width:30, height:30))
-        self.attendButton.setImage(#imageLiteral(resourceName: "add"), for: .normal)
-       // self.attendButton.backgroundColor = UIColor.white
-        self.attendButton.addTarget(self, action: #selector(didPressAttendButton(sender:)), for: .touchUpInside)
-        cell.accessoryView = self.attendButton;
-        self.attendButton.tag = indexPath.row
+//        self.attendButton = UIButton(frame: CGRect(x:0, y:0, width:30, height:30))
+//        self.attendButton.setImage(#imageLiteral(resourceName: "add"), for: .normal)
+//       // self.attendButton.backgroundColor = UIColor.white
+//        self.attendButton.addTarget(self, action: #selector(didPressAttendButton(sender:)), for: .touchUpInside)
+//        cell.accessoryView = self.attendButton;
+//        self.attendButton.tag = indexPath.row
         
         if self.tabBar.selectedItem?.tag == 0 {
             //def easier way to do this
@@ -177,7 +179,7 @@ extension EventsAndSchedualViewController : UITableViewDataSource{
             cell.eventOpeners.text = self.currentDayEvents[indexPath.row].openers
             cell.eventTime.text = self.currentDayEvents[indexPath.row].time
             cell.eventVenue.text = self.currentDayEvents[indexPath.row].venue
-            cell.eventImage.image = #imageLiteral(resourceName: "SplashPage")
+            cell.eventImage.image = self.currentDayEvents[indexPath.row].eventImage
         }
         else {
             self.attendButton.setImage(#imageLiteral(resourceName: "remove"), for: .normal)
@@ -185,7 +187,7 @@ extension EventsAndSchedualViewController : UITableViewDataSource{
             cell.eventOpeners.text = self.myEvents[indexPath.row].openers
             cell.eventTime.text = self.myEvents[indexPath.row].time
             cell.eventVenue.text = self.myEvents[indexPath.row].venue
-            cell.eventImage.image = #imageLiteral(resourceName: "SplashPage")
+            cell.eventImage.image =  self.myEvents[indexPath.row].eventImage
         }
         
         return cell

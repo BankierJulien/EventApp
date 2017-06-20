@@ -17,10 +17,45 @@ struct EventManager {
     var tuesdayEvents = [Events]()
 
     // sixty One Local
-    let testEventOne = Events(headliner: "John Doe", openers: "john and friends", time: "0:0", tickets: "url", venue: "sixtyOneLocal", date: "monday",  eventDescription: "event", id: 1)
-    let testEventTwo = Events(headliner: "fred", openers: "john and friends", time: "10:0", tickets: "url", venue: "sixtyOneLocal", date: "monday",  eventDescription: "event", id: 2)
-    let testEventThree = Events(headliner: "bob", openers: "john and friends",  time: "doors open 10", tickets: "url", venue: "sixtyOneLocal", date: "tuesday",  eventDescription: "event", id: 3)
-     let testEventFour = Events(headliner: "Julien Fishburn", openers: "john and friends",  time: "doors 10", tickets: "url", venue: "blube", date: "tuesday",  eventDescription: "event", id: 4)
+    let testEventOne = Events(headliner: "John Doe",
+                              openers: "john and friends",
+                              time: "0:0",
+                              tickets: "url",
+                              venue: "sixtyOneLocal",
+                              date: "monday",
+                              eventDescription: "event",
+                              id: 1,
+                              eventImage: #imageLiteral(resourceName: "61LocalImage"))
+    
+    let testEventTwo = Events(headliner: "fred",
+                              openers: "john and friends",
+                              time: "10:0",
+                              tickets: "url",
+                              venue: "sixtyOneLocal",
+                              date: "monday",
+                              eventDescription: "event",
+                              id: 2,
+                              eventImage: #imageLiteral(resourceName: "annoyanceImage") )
+    
+    let testEventThree = Events(headliner: "bob",
+                                openers: "john and friends",
+                                time: "doors open 10",
+                                tickets: "url",
+                                venue: "sixtyOneLocal",
+                                date: "tuesday",
+                                eventDescription: "event",
+                                id: 3,
+                                eventImage:#imageLiteral(resourceName: "matchlessImage") )
+    
+     let testEventFour = Events(headliner: "Julien Fishburn",
+                                openers: "john and friends",
+                                time: "doors 10",
+                                tickets: "url",
+                                venue: "blube",
+                                date: "tuesday",
+                                eventDescription: "event",
+                                id: 4,
+                                eventImage: #imageLiteral(resourceName: "bellhouseImage"))
     
     
     init(){

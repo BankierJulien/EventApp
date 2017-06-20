@@ -20,12 +20,26 @@ class RootViewController: UIViewController {
     // menu have sponsers animate
     // unit test?
     
+    // slide in text https://www.andrewcbancroft.com/2014/09/24/slide-in-animation-in-swift/
+    
     @IBOutlet var menuButton: UIBarButtonItem!
     @IBOutlet var gestureScreenEdgePan: UIScreenEdgePanGestureRecognizer!
-    @IBOutlet var testImage: UIImageView!
+    @IBOutlet var homeImageView: UIImageView!
     
+    var imageArray = [#imageLiteral(resourceName: "SplashOne"), #imageLiteral(resourceName: "SplashTwo"), #imageLiteral(resourceName: "SplashThree"), #imageLiteral(resourceName: "SplashFour")]
+    var index = 0
+   // var homeImageTimer : Timer
+    
+    
+    @IBOutlet var introTextLabel: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let blur = UIBlurEffect(style: .light)
+        let blurView = UIVisualEffectView(effect: blur)
+        blurView.frame = introTextLabel.bounds
+        introTextLabel.addSubview(blurView)
+        introTextLabel.sendSubview(toBack: blurView)
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         
@@ -35,13 +49,28 @@ class RootViewController: UIViewController {
             
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-        
         self.revealViewController().rearViewRevealWidth = self.view.frame.width/2
-        
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        _ = Timer.scheduledTimer(timeInterval: 5, target: self,  selector: (#selector(fadeImage)), userInfo: nil, repeats: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+      //  self.homeImageTimer = nil
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    //MARK: stop vtimer on exits
+    func fadeImage() {
+        index = index < self.imageArray.count - 1 ? index + 1: 0
+        self.homeImageView.image = imageArray[index]
+        self.homeImageView.slideInFromRight()
+    }
+    
 }
 

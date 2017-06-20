@@ -15,6 +15,7 @@
 		9A180A031ED3770F005F4F0E /* BKCommedyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A180A021ED3770F005F4F0E /* BKCommedyTests.swift */; };
 		9A180A0E1ED3770F005F4F0E /* BKCommedyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A180A0D1ED3770F005F4F0E /* BKCommedyUITests.swift */; };
 		9A3CDDA91EE753E800DC283C /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3CDDA81EE753E800DC283C /* SWRevealViewController.m */; };
+		9A40BF261EF8A030005064A7 /* fadeInAndOutExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A40BF251EF8A030005064A7 /* fadeInAndOutExtension.swift */; };
 		9A501A1D1EDE38700075E61E /* VenueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A501A1C1EDE38700075E61E /* VenueDetailViewController.swift */; };
 		9A501A1F1EDE39B10075E61E /* VenueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A501A1E1EDE39B10075E61E /* VenueTableViewController.swift */; };
 		9A99C4121EE87BD800957146 /* EventsAndSchedualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A99C4111EE87BD800957146 /* EventsAndSchedualViewController.swift */; };
@@ -65,6 +66,7 @@
 		9A3CDDA61EE753E800DC283C /* BKCommedy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BKCommedy-Bridging-Header.h"; sourceTree = "<group>"; };
 		9A3CDDA71EE753E800DC283C /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		9A3CDDA81EE753E800DC283C /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		9A40BF251EF8A030005064A7 /* fadeInAndOutExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = fadeInAndOutExtension.swift; sourceTree = "<group>"; };
 		9A501A1C1EDE38700075E61E /* VenueDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VenueDetailViewController.swift; path = ../VenueDetailViewController.swift; sourceTree = "<group>"; };
 		9A501A1E1EDE39B10075E61E /* VenueTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueTableViewController.swift; sourceTree = "<group>"; };
 		9A99C4111EE87BD800957146 /* EventsAndSchedualViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsAndSchedualViewController.swift; path = ../EventsAndSchedualViewController.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				9ADB276F1EF1D65F00DEE18E /* MenuTableViewController.swift */,
 				9AA2791A1EDE2BA0006D2123 /* AboutViewController.swift */,
 				9AF187F51EF85E77002A30E8 /* filterDuplicatesArrayExtension.swift */,
+				9A40BF251EF8A030005064A7 /* fadeInAndOutExtension.swift */,
 				9ADB27731EF32E8E00DEE18E /* Event Controllers */,
 				9ADB27721EF32E8000DEE18E /* Venue Contollers */,
 			);
@@ -363,6 +366,7 @@
 				9A9E62351EE9BFE500AD3B4C /* EventTableViewCell.swift in Sources */,
 				9A99C4121EE87BD800957146 /* EventsAndSchedualViewController.swift in Sources */,
 				9ADB27701EF1D65F00DEE18E /* MenuTableViewController.swift in Sources */,
+				9A40BF261EF8A030005064A7 /* fadeInAndOutExtension.swift in Sources */,
 				9AA2791D1EDE2ED8006D2123 /* AboutStrings.swift in Sources */,
 				9A9E62391EE9C6A300AD3B4C /* Events.swift in Sources */,
 				9A1809F01ED3770F005F4F0E /* RootViewController.swift in Sources */,
