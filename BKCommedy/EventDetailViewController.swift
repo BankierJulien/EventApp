@@ -24,7 +24,9 @@ class EventDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         self.navigationController?.title = "BK Comedy Fest Venues"
+        self.navigationController?.title = selectedEvent.headliner
+//        self.navigationController?.navigationBar.it TitleTextAttributes = ([NSForegroundColorAttributeName: UIColor.init(red: 200/255, green: 64/255, blue: 50/255, alpha: 1.0) ], for: .selected)
+
         
         self.eventHeadlingerLabel.text = selectedEvent.headliner
         self.eventOpenersLabel.text = selectedEvent.openers
@@ -32,16 +34,7 @@ class EventDetailViewController: UIViewController {
         self.eventTimeLabel.text = selectedEvent.time
         self.eventDescriptionLabel.text = selectedEvent.eventDescription
         self.eventImageView.image = selectedEvent.eventImage
-        
-        let gradient: CAGradientLayer = CAGradientLayer()
-        
-        gradient.colors = [UIColor.white.cgColor, UIColor.black.cgColor]
-        gradient.locations = [0.0 , 1.0]
-        gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
-        gradient.endPoint = CGPoint(x: 0.0, y: 1.0)
-        gradient.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.size.width, height: self.view.frame.size.height)
-        
-        self.view.layer.insertSublayer(gradient, at: 0)
+
     }
 
     override func didReceiveMemoryWarning() {

@@ -11,24 +11,15 @@ import UIKit
 
 class RootViewController: UIViewController {
     
-    // TODO:
-    //    For event and sched : - events button toggle, - events load image, - events detail view, - scehdual switch properly, - remove duplicates from myevents, - events detail view
-    //    for venues : downlaod imaegs properly, figure out nav control, implemtn map view, ui updates
-    // about: add faq
-    // ui in general
-    // root view: add content, have iamges animating
-    // menu have sponsers animate
-    // unit test?
-    
     // slide in text https://www.andrewcbancroft.com/2014/09/24/slide-in-animation-in-swift/
     
     @IBOutlet var menuButton: UIBarButtonItem!
     @IBOutlet var gestureScreenEdgePan: UIScreenEdgePanGestureRecognizer!
     @IBOutlet var homeImageView: UIImageView!
+    @IBOutlet var eventText: UITextField!
     
-    var imageArray = [#imageLiteral(resourceName: "SplashOne"), #imageLiteral(resourceName: "SplashTwo"), #imageLiteral(resourceName: "SplashThree"), #imageLiteral(resourceName: "SplashFour")]
+  
     var index = 0
-   // var homeImageTimer : Timer
     
     
     @IBOutlet var introTextLabel: UITextField!
@@ -67,9 +58,12 @@ class RootViewController: UIViewController {
     
     //MARK: stop vtimer on exits
     func fadeImage() {
-        index = index < self.imageArray.count - 1 ? index + 1: 0
-        self.homeImageView.image = imageArray[index]
+        index = index <  EventManager().allEvents.count - 1 ? index + 1: 0
+        self.homeImageView.image = EventManager().allEvents[index].eventImage
+        let testString = EventManager().allEvents[index].headliner + " with " + EventManager().allEvents[index].openers + " @ " + EventManager().allEvents[index].venue
+        self.eventText.text = testString
         self.homeImageView.slideInFromRight()
+        self.eventText.slideInFromRight()
     }
     
 }

@@ -19,7 +19,6 @@ extension UIView {
         if let delegate: AnyObject = completionDelegate {
             slideInFromRightTransition.delegate = delegate as? CAAnimationDelegate
         }
-        
         // Customize the animation's properties
         slideInFromRightTransition.type = kCATransitionPush
         slideInFromRightTransition.subtype = kCATransitionFromRight

@@ -30,8 +30,5 @@ class EventTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-//change image?
-    @IBAction func addEventPressed(_ sender: Any) {
-        
-    }
+
 }

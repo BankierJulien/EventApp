@@ -10,6 +10,7 @@ import UIKit
 
 class MenuTableViewController: UITableViewController {
 
+    @IBOutlet var blurView: UIView!
     @IBOutlet var sponsersImageView: UIImageView!
     var index = 0
     var sponserImageArray = [#imageLiteral(resourceName: "leafly"), #imageLiteral(resourceName: "ifc"), #imageLiteral(resourceName: "iceBreakers"), #imageLiteral(resourceName: "theWilliamVale"), #imageLiteral(resourceName: "826NYC"), #imageLiteral(resourceName: "marbles"), #imageLiteral(resourceName: "sixPoint")]
@@ -17,6 +18,13 @@ class MenuTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
          _ = Timer.scheduledTimer(timeInterval: 3, target: self,  selector:(#selector(fadeImage)), userInfo: nil, repeats: true)
+        
+        let blur = UIBlurEffect(style: .light)
+        let blurEffect = UIVisualEffectView(effect: blur)
+        blurEffect.frame = blurView.bounds
+        blurView.addSubview(blurEffect)
+        blurView.sendSubview(toBack: blurEffect)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,13 +35,13 @@ class MenuTableViewController: UITableViewController {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 20))
         let titleLabel = UILabel(frame: CGRect(x: 15, y: 5, width: tableView.bounds.size.width, height: 20))
         if section == 0{
-            headerView.backgroundColor = UIColor.black
+            headerView.backgroundColor = UIColor(red: 9/255, green: 9/255, blue: 26/255, alpha: 1.0)
             titleLabel.text = "BK Comedy Festival"
             titleLabel.textColor = UIColor.white
             headerView.addSubview(titleLabel)
         }
         else if section == 1{
-            headerView.backgroundColor = UIColor.black
+            headerView.backgroundColor = UIColor(red: 9/255, green: 9/255, blue: 26/255, alpha: 1.0)
             titleLabel.text = "Sponsers"
             titleLabel.textColor = UIColor.white
             headerView.addSubview(titleLabel)

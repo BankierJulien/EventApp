@@ -32,7 +32,7 @@ struct EventManager {
                               date: "monday",
                               eventDescription: "event",
                               id: 1,
-                              eventImage: #imageLiteral(resourceName: "61LocalImage"))
+                              eventImage: #imageLiteral(resourceName: "SplashOne"))
     
     let testEventTwo = Events(headliner: "fred",
                               openers: "john and friends",
@@ -42,7 +42,7 @@ struct EventManager {
                               date: "monday",
                               eventDescription: "event",
                               id: 2,
-                              eventImage: #imageLiteral(resourceName: "annoyanceImage") )
+                              eventImage: #imageLiteral(resourceName: "SplashTwo") )
     
     let testEventsix = Events(headliner: "fred",
                               openers: "john and friends",
@@ -52,7 +52,7 @@ struct EventManager {
                               date: "monday",
                               eventDescription: "event",
                               id: 3,
-                              eventImage: #imageLiteral(resourceName: "events") )
+                              eventImage: #imageLiteral(resourceName: "SplashThree") )
     
     let testEventfive = Events(headliner: "fred",
                               openers: "john and friends",
@@ -62,7 +62,7 @@ struct EventManager {
                               date: "monday",
                               eventDescription: "event",
                               id: 4,
-                              eventImage: #imageLiteral(resourceName: "about") )
+                              eventImage: #imageLiteral(resourceName: "SplashFour") )
     
     let testEventThree = Events(headliner: "bob",
                                 openers: "john and friends",

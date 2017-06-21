@@ -25,7 +25,7 @@ class AboutViewController: UIViewController {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         self.aboutTextView.text = AboutStrings().about
-        self.aboutTextView.backgroundColor = UIColor.black
+//        self.aboutTextView.backgroundColor = UIColor(red: 9/255, green: 9/255, blue: 26/255, alpha: 1.0)
     }
     
     override func didReceiveMemoryWarning() {

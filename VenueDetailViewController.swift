@@ -29,7 +29,6 @@ class VenueDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.title = "BK Comedy Fest Venues"
     }
     
     
