@@ -26,12 +26,6 @@ class RootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let blur = UIBlurEffect(style: .light)
-        let blurView = UIVisualEffectView(effect: blur)
-        blurView.frame = introTextLabel.bounds
-        introTextLabel.addSubview(blurView)
-        introTextLabel.sendSubview(toBack: blurView)
-        
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         
         if self.revealViewController() != nil {
@@ -40,7 +34,25 @@ class RootViewController: UIViewController {
             
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        
         self.revealViewController().rearViewRevealWidth = self.view.frame.width/2
+
+        let blur = UIBlurEffect(style: .light)
+        let blurView = UIVisualEffectView(effect: blur)
+        blurView.frame = introTextLabel.bounds
+        introTextLabel.addSubview(blurView)
+        introTextLabel.sendSubview(toBack: blurView)
+        
+        let buttonWidth: CGFloat = 100
+        let flatButton = FUIButton(frame: CGRect(x:self.introTextLabel.frame.size.width/2 - buttonWidth,y:self.introTextLabel.frame.size.height * 2/3, width:buttonWidth * 2, height:buttonWidth/2))
+        self.introTextLabel.addSubview(flatButton)
+        flatButton.buttonColor = UIColor.alizarin()
+        flatButton.shadowColor = UIColor.pomegranate()
+        flatButton.cornerRadius = 6.0
+        flatButton.shadowHeight = 3.0
+        flatButton.setTitle("Buy Tickets", for: .normal)
+        flatButton.setTitleColor(UIColor.white, for: .normal)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {

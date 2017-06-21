@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A0339F21EFB06A000083CA9 /* FUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0339F11EFB06A000083CA9 /* FUIButton.m */; };
+		9A0339F51EFB06C700083CA9 /* UIImage+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0339F41EFB06C700083CA9 /* UIImage+FlatUI.m */; };
+		9A0339F81EFB073600083CA9 /* UIColor+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0339F71EFB073600083CA9 /* UIColor+FlatUI.m */; };
+		9A0339FD1EFB0C1200083CA9 /* UINavigationBar+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0339FC1EFB0C1200083CA9 /* UINavigationBar+FlatUI.m */; };
 		9A1809EE1ED3770F005F4F0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1809ED1ED3770F005F4F0E /* AppDelegate.swift */; };
 		9A1809F01ED3770F005F4F0E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1809EF1ED3770F005F4F0E /* RootViewController.swift */; };
 		9A1809F31ED3770F005F4F0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A1809F11ED3770F005F4F0E /* Main.storyboard */; };
@@ -60,6 +64,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9A0339F01EFB06A000083CA9 /* FUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUIButton.h; sourceTree = "<group>"; };
+		9A0339F11EFB06A000083CA9 /* FUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUIButton.m; sourceTree = "<group>"; };
+		9A0339F31EFB06C700083CA9 /* UIImage+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FlatUI.h"; sourceTree = "<group>"; };
+		9A0339F41EFB06C700083CA9 /* UIImage+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FlatUI.m"; sourceTree = "<group>"; };
+		9A0339F61EFB073600083CA9 /* UIColor+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FlatUI.h"; sourceTree = "<group>"; };
+		9A0339F71EFB073600083CA9 /* UIColor+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FlatUI.m"; sourceTree = "<group>"; };
+		9A0339FB1EFB0C1200083CA9 /* UINavigationBar+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+FlatUI.h"; sourceTree = "<group>"; };
+		9A0339FC1EFB0C1200083CA9 /* UINavigationBar+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+FlatUI.m"; sourceTree = "<group>"; };
 		9A1809EA1ED3770F005F4F0E /* BKCommedy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BKCommedy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A1809ED1ED3770F005F4F0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A1809EF1ED3770F005F4F0E /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +140,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9A0339F91EFB074900083CA9 /* FlatUI */ = {
+			isa = PBXGroup;
+			children = (
+				9A0339FB1EFB0C1200083CA9 /* UINavigationBar+FlatUI.h */,
+				9A0339FC1EFB0C1200083CA9 /* UINavigationBar+FlatUI.m */,
+				9A0339F61EFB073600083CA9 /* UIColor+FlatUI.h */,
+				9A0339F71EFB073600083CA9 /* UIColor+FlatUI.m */,
+				9A0339F01EFB06A000083CA9 /* FUIButton.h */,
+				9A0339F11EFB06A000083CA9 /* FUIButton.m */,
+				9A0339F31EFB06C700083CA9 /* UIImage+FlatUI.h */,
+				9A0339F41EFB06C700083CA9 /* UIImage+FlatUI.m */,
+			);
+			name = FlatUI;
+			sourceTree = "<group>";
+		};
+		9A0339FA1EFB076700083CA9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9AF187F51EF85E77002A30E8 /* filterDuplicatesArrayExtension.swift */,
+				9A40BF251EF8A030005064A7 /* fadeInAndOutExtension.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		9A1809E11ED3770F005F4F0E = {
 			isa = PBXGroup;
 			children = (
@@ -154,9 +190,10 @@
 				9A1809ED1ED3770F005F4F0E /* AppDelegate.swift */,
 				9ABD22851EF9B8A500B49D71 /* montserrat */,
 				9A5ACBC11EDE30C800CAFDC7 /* Controllers */,
-				9A1809F11ED3770F005F4F0E /* Main.storyboard */,
+				9A0339F91EFB074900083CA9 /* FlatUI */,
 				9A3CDDAA1EE753F000DC283C /* SWReveal */,
 				9A5ACBC21EDE30D400CAFDC7 /* Models */,
+				9A1809F11ED3770F005F4F0E /* Main.storyboard */,
 				9A1809F41ED3770F005F4F0E /* Assets.xcassets */,
 				9ADB27711EF3234C00DEE18E /* New Group */,
 				9A1809F61ED3770F005F4F0E /* LaunchScreen.storyboard */,
@@ -188,7 +225,6 @@
 			children = (
 				9A3CDDA71EE753E800DC283C /* SWRevealViewController.h */,
 				9A3CDDA81EE753E800DC283C /* SWRevealViewController.m */,
-				9A3CDDA61EE753E800DC283C /* BKCommedy-Bridging-Header.h */,
 			);
 			name = SWReveal;
 			sourceTree = "<group>";
@@ -199,8 +235,8 @@
 				9A1809EF1ED3770F005F4F0E /* RootViewController.swift */,
 				9ADB276F1EF1D65F00DEE18E /* MenuTableViewController.swift */,
 				9AA2791A1EDE2BA0006D2123 /* AboutViewController.swift */,
-				9AF187F51EF85E77002A30E8 /* filterDuplicatesArrayExtension.swift */,
-				9A40BF251EF8A030005064A7 /* fadeInAndOutExtension.swift */,
+				9A3CDDA61EE753E800DC283C /* BKCommedy-Bridging-Header.h */,
+				9A0339FA1EFB076700083CA9 /* Extensions */,
 				9ADB27731EF32E8E00DEE18E /* Event Controllers */,
 				9ADB27721EF32E8000DEE18E /* Venue Contollers */,
 			);
@@ -424,8 +460,12 @@
 				9A501A1F1EDE39B10075E61E /* VenueTableViewController.swift in Sources */,
 				9AD1E4741EDE19DB007F634B /* VenueManager.swift in Sources */,
 				9AF187F61EF85E77002A30E8 /* filterDuplicatesArrayExtension.swift in Sources */,
+				9A0339F21EFB06A000083CA9 /* FUIButton.m in Sources */,
+				9A0339F51EFB06C700083CA9 /* UIImage+FlatUI.m in Sources */,
 				9A501A1D1EDE38700075E61E /* VenueDetailViewController.swift in Sources */,
+				9A0339FD1EFB0C1200083CA9 /* UINavigationBar+FlatUI.m in Sources */,
 				9A9E623D1EE9FA9400AD3B4C /* Venues.swift in Sources */,
+				9A0339F81EFB073600083CA9 /* UIColor+FlatUI.m in Sources */,
 				9A3CDDA91EE753E800DC283C /* SWRevealViewController.m in Sources */,
 				9AF187F81EF8824C002A30E8 /* EventDetailViewController.swift in Sources */,
 				9AA2791B1EDE2BA0006D2123 /* AboutViewController.swift in Sources */,
