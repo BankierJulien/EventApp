@@ -35,13 +35,13 @@ class MenuTableViewController: UITableViewController {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 20))
         let titleLabel = UILabel(frame: CGRect(x: 15, y: 5, width: tableView.bounds.size.width, height: 20))
         if section == 0{
-            headerView.backgroundColor = UIColor(red: 9/255, green: 9/255, blue: 26/255, alpha: 1.0)
+            headerView.backgroundColor = UIColor.midnightBlue()
             titleLabel.text = "BK Comedy Festival"
             titleLabel.textColor = UIColor.white
             headerView.addSubview(titleLabel)
         }
         else if section == 1{
-            headerView.backgroundColor = UIColor(red: 9/255, green: 9/255, blue: 26/255, alpha: 1.0)
+            headerView.backgroundColor = UIColor.midnightBlue()
             titleLabel.text = "Sponsers"
             titleLabel.textColor = UIColor.white
             headerView.addSubview(titleLabel)

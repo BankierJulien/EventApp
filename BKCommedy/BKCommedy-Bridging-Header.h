@@ -6,5 +6,6 @@
 #import "FUIButton.h"
 #import "UIImage+FlatUI.h"
 #import "UIColor+FlatUI.h"
-#import "UINavigationBar+FlatUI"
+#import "UINavigationBar+FlatUI.h"
+#import "NSString+Icons.h"
 

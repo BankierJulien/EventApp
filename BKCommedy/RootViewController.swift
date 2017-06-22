@@ -27,7 +27,9 @@ class RootViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
-        
+        self.navigationController?.navigationBar.configureFlatNavigationBar(with: UIColor.midnightBlue())
+        self.menuButton.tintColor = UIColor.alizarin()
+    
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
@@ -42,17 +44,23 @@ class RootViewController: UIViewController {
         blurView.frame = introTextLabel.bounds
         introTextLabel.addSubview(blurView)
         introTextLabel.sendSubview(toBack: blurView)
+        introTextLabel.backgroundColor = UIColor.midnightBlue()
+        introTextLabel.alpha = 0.3
+        
         
         let buttonWidth: CGFloat = 100
-        let flatButton = FUIButton(frame: CGRect(x:self.introTextLabel.frame.size.width/2 - buttonWidth,y:self.introTextLabel.frame.size.height * 2/3, width:buttonWidth * 2, height:buttonWidth/2))
-        self.introTextLabel.addSubview(flatButton)
+        let flatButton = FUIButton(frame: CGRect(x:self.view.frame.size.width/2 - buttonWidth,y:self.view.frame.size.height * 2/3 + self.introTextLabel.frame.size.height/2 , width:buttonWidth * 2, height:buttonWidth/2))
         flatButton.buttonColor = UIColor.alizarin()
         flatButton.shadowColor = UIColor.pomegranate()
         flatButton.cornerRadius = 6.0
         flatButton.shadowHeight = 3.0
         flatButton.setTitle("Buy Tickets", for: .normal)
         flatButton.setTitleColor(UIColor.white, for: .normal)
+        self.view.addSubview(flatButton)
+        self.introTextLabel.sendSubview(toBack: introTextLabel)
 
+
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -29,6 +29,9 @@ class VenueDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.configureFlatNavigationBar(with: UIColor.midnightBlue())
+
     }
     
     

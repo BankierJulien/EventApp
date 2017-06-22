@@ -42,6 +42,8 @@ class EventsAndSchedualViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.configureFlatNavigationBar(with: UIColor.midnightBlue())
+        
         // menu logic
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()

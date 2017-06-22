@@ -22,6 +22,7 @@
 		9A40BF261EF8A030005064A7 /* fadeInAndOutExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A40BF251EF8A030005064A7 /* fadeInAndOutExtension.swift */; };
 		9A501A1D1EDE38700075E61E /* VenueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A501A1C1EDE38700075E61E /* VenueDetailViewController.swift */; };
 		9A501A1F1EDE39B10075E61E /* VenueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A501A1E1EDE39B10075E61E /* VenueTableViewController.swift */; };
+		9A5F00B41EFB0E510084EA5A /* NSString+Icons.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5F00B31EFB0E510084EA5A /* NSString+Icons.m */; };
 		9A6E21291EF8E10A003E3078 /* DayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E21281EF8E10A003E3078 /* DayCollectionViewCell.swift */; };
 		9A99C4121EE87BD800957146 /* EventsAndSchedualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A99C4111EE87BD800957146 /* EventsAndSchedualViewController.swift */; };
 		9A9E62351EE9BFE500AD3B4C /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9E62341EE9BFE500AD3B4C /* EventTableViewCell.swift */; };
@@ -91,6 +92,8 @@
 		9A40BF251EF8A030005064A7 /* fadeInAndOutExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = fadeInAndOutExtension.swift; sourceTree = "<group>"; };
 		9A501A1C1EDE38700075E61E /* VenueDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VenueDetailViewController.swift; path = ../VenueDetailViewController.swift; sourceTree = "<group>"; };
 		9A501A1E1EDE39B10075E61E /* VenueTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueTableViewController.swift; sourceTree = "<group>"; };
+		9A5F00B21EFB0E510084EA5A /* NSString+Icons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Icons.h"; sourceTree = "<group>"; };
+		9A5F00B31EFB0E510084EA5A /* NSString+Icons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Icons.m"; sourceTree = "<group>"; };
 		9A6E21281EF8E10A003E3078 /* DayCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCollectionViewCell.swift; sourceTree = "<group>"; };
 		9A99C4111EE87BD800957146 /* EventsAndSchedualViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsAndSchedualViewController.swift; path = ../EventsAndSchedualViewController.swift; sourceTree = "<group>"; };
 		9A9E62341EE9BFE500AD3B4C /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
@@ -143,6 +146,8 @@
 		9A0339F91EFB074900083CA9 /* FlatUI */ = {
 			isa = PBXGroup;
 			children = (
+				9A5F00B21EFB0E510084EA5A /* NSString+Icons.h */,
+				9A5F00B31EFB0E510084EA5A /* NSString+Icons.m */,
 				9A0339FB1EFB0C1200083CA9 /* UINavigationBar+FlatUI.h */,
 				9A0339FC1EFB0C1200083CA9 /* UINavigationBar+FlatUI.m */,
 				9A0339F61EFB073600083CA9 /* UIColor+FlatUI.h */,
@@ -464,6 +469,7 @@
 				9A0339F51EFB06C700083CA9 /* UIImage+FlatUI.m in Sources */,
 				9A501A1D1EDE38700075E61E /* VenueDetailViewController.swift in Sources */,
 				9A0339FD1EFB0C1200083CA9 /* UINavigationBar+FlatUI.m in Sources */,
+				9A5F00B41EFB0E510084EA5A /* NSString+Icons.m in Sources */,
 				9A9E623D1EE9FA9400AD3B4C /* Venues.swift in Sources */,
 				9A0339F81EFB073600083CA9 /* UIColor+FlatUI.m in Sources */,
 				9A3CDDA91EE753E800DC283C /* SWRevealViewController.m in Sources */,
