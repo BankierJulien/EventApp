@@ -297,9 +297,9 @@
 			isa = PBXGroup;
 			children = (
 				9A99C4111EE87BD800957146 /* EventsAndSchedualViewController.swift */,
+				9AF187F71EF8824C002A30E8 /* EventDetailViewController.swift */,
 				9A6E21281EF8E10A003E3078 /* DayCollectionViewCell.swift */,
 				9A9E62341EE9BFE500AD3B4C /* EventTableViewCell.swift */,
-				9AF187F71EF8824C002A30E8 /* EventDetailViewController.swift */,
 			);
 			name = "Event Controllers";
 			sourceTree = "<group>";

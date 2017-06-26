@@ -18,8 +18,11 @@ enum day: Int {
     case friday = 4
     case saturday = 5
     case sunday = 6
-    
 }
+
+//TO DO: Remvoe Seprotrs from venue page
+//TO DO: dissmis hambuger menu on tap on active view
+// MENU ICONS SHOULD HAVE SAME THICK NESS
 
 
 class EventsAndSchedualViewController: UIViewController {
@@ -43,7 +46,6 @@ class EventsAndSchedualViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.configureFlatNavigationBar(with: UIColor.midnightBlue())
-        
         // menu logic
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
@@ -61,6 +63,8 @@ class EventsAndSchedualViewController: UIViewController {
         self.dayCollectionView.dataSource = self
         self.dayCollectionView.delegate = self
         
+      
+
         self.tabBar.items?.first?.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.init(red: 200/255, green: 64/255, blue: 50/255, alpha: 1.0) ], for: .selected)
         self.tabBar.items?.last?.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.init(red: 200/255, green: 64/255, blue: 50/255, alpha: 1.0) ], for: .selected)
         
@@ -139,8 +143,8 @@ extension EventsAndSchedualViewController : UITableViewDataSource{
         self.attendButton = UIButton(frame: CGRect(x:cell.frame.size.width - buttonWidth, y:cell.frame.size.height/2 - buttonWidth, width:buttonWidth, height:buttonWidth))
         self.attendButton.addTarget(self, action: #selector(didPressAttendButton(sender:)), for: .touchUpInside)
         self.attendButton.tag = indexPath.row
-        self.attendButton.backgroundColor = UIColor.black
-        self.attendButton.isUserInteractionEnabled = true
+        self.attendButton.backgroundColor = UIColor.blue
+       
         
         if self.tabBar.selectedItem?.tag == 0 {
             cell.eventPerformer.text = self.currentDayEvents[indexPath.row].headliner
@@ -149,11 +153,9 @@ extension EventsAndSchedualViewController : UITableViewDataSource{
             cell.eventVenue.text = self.currentDayEvents[indexPath.row].venue
             cell.eventImage.image = self.currentDayEvents[indexPath.row].eventImage
             cell.addSubview(self.attendButton)
-//            cell.sendSubview(toBack: cell.eventImage)
 
         }
         else {
-            self.attendButton.setImage(#imageLiteral(resourceName: "remove"), for: .normal)
             cell.eventPerformer.text = self.myEvents[indexPath.row].headliner
             cell.eventOpeners.text = self.myEvents[indexPath.row].openers
             cell.eventTime.text = self.myEvents[indexPath.row].time
@@ -168,18 +170,29 @@ extension EventsAndSchedualViewController : UITableViewDataSource{
     
     
     func didPressAttendButton(sender:UIButton) {
+        print(sender.tag)
+        
+        print(self.attendButton.tag)
+
+        if self.attendButton.isSelected {
+            print("sel")
+//            self.attendButton.isSelected = !self.attendButton.isSelected
+
+        }
+        else {
+            print("not")
+//            self.attendButton.isSelected = !self.attendButton.isSelected
+
+        }
+        
+        
         
         if self.tabBar.selectedItem?.tag == 0 {
-            //self.attendButton.updateConstraintsIfNeeded()
             self.attendButton.backgroundColor = UIColor.red
-
-            self.attendButton.setImage(#imageLiteral(resourceName: "remove"), for: .normal)
             self.addEventToSchedual(eventIndex: sender.tag)
         }
         else {
             self.attendButton.backgroundColor = UIColor.green
-
-            self.attendButton.setImage(#imageLiteral(resourceName: "add"), for: .normal)
             self.removeEventFromSchedual(eventIndex: sender.tag)
         }
         self.eventTableView.reloadData()

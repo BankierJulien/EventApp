@@ -17,6 +17,9 @@ class RootViewController: UIViewController {
     @IBOutlet var gestureScreenEdgePan: UIScreenEdgePanGestureRecognizer!
     @IBOutlet var homeImageView: UIImageView!
     @IBOutlet var eventText: UITextField!
+    @IBOutlet var eventVenue: UILabel!
+    @IBOutlet var eventTime: UILabel!
+    @IBOutlet var eventDetailsHomePageView: UIView!
     
   
     var index = 0
@@ -58,6 +61,7 @@ class RootViewController: UIViewController {
         flatButton.setTitleColor(UIColor.white, for: .normal)
         self.view.addSubview(flatButton)
         self.introTextLabel.sendSubview(toBack: introTextLabel)
+        flatButton.addTarget(self, action:#selector(buyTicketPressed(Sender:)), for: .touchUpInside)
 
 
         
@@ -80,10 +84,16 @@ class RootViewController: UIViewController {
     func fadeImage() {
         index = index <  EventManager().allEvents.count - 1 ? index + 1: 0
         self.homeImageView.image = EventManager().allEvents[index].eventImage
-        let testString = EventManager().allEvents[index].headliner + " with " + EventManager().allEvents[index].openers + " @ " + EventManager().allEvents[index].venue
-        self.eventText.text = testString
+        self.eventText.text = EventManager().allEvents[index].headliner
+        self.eventVenue.text = EventManager().allEvents[index].venue
+        self.eventTime.text = EventManager().allEvents[index].time
         self.homeImageView.slideInFromRight()
-        self.eventText.slideInFromRight()
+        self.eventDetailsHomePageView.slideInFromRight()
+    }
+    
+    func buyTicketPressed(Sender: UIButton){
+        print("buy ticket pressed")
+        
     }
     
 }

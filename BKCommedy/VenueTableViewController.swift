@@ -11,13 +11,12 @@ import UIKit
 class VenueTableViewController: UITableViewController {
     
     let venues = VenueManager().allVenues
-    
     var venueImage = UIImage()
-    
-    
     @IBOutlet var menuButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.configureFlatNavigationBar(with: UIColor.midnightBlue())
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
@@ -46,10 +45,9 @@ class VenueTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //clean up at some point
-        print("You selected cell #\(indexPath.row)!")
         
     }
-    
+//
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showVenueDetail" {
             let detailVC = segue.destination as! VenueDetailViewController
@@ -58,6 +56,10 @@ class VenueTableViewController: UITableViewController {
             detailVC.selectedVenue = venues[row]
         }
     }
+    
+    
+    
+    
     
     
 }

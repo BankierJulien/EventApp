@@ -25,16 +25,16 @@ struct EventManager {
 
     // sixty One Local
     let testEventOne = Events(headliner: "John Doe",
-                              openers: "john and friends",
-                              time: "0:0",
+                              openers: "Jo and friends",
+                              time: "Doors open @ 11:00",
                               tickets: "url",
-                              venue: "sixtyOneLocal",
-                              date: "monday",
+                              venue: "Sixty One Local",
+                              date: "Monday",
                               eventDescription: "event",
                               id: 1,
                               eventImage: #imageLiteral(resourceName: "SplashOne"))
     
-    let testEventTwo = Events(headliner: "fred",
+    let testEventTwo = Events(headliner: "Fred",
                               openers: "john and friends",
                               time: "10:0",
                               tickets: "url",

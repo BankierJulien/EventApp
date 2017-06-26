@@ -25,6 +25,8 @@ class EventDetailViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationController?.title = selectedEvent.headliner
+        self.navigationController?.navigationBar.configureFlatNavigationBar(with: UIColor.midnightBlue())
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
 //        self.navigationController?.navigationBar.it TitleTextAttributes = ([NSForegroundColorAttributeName: UIColor.init(red: 200/255, green: 64/255, blue: 50/255, alpha: 1.0) ], for: .selected)
 
         

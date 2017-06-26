@@ -31,7 +31,8 @@ class VenueDetailViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.configureFlatNavigationBar(with: UIColor.midnightBlue())
-
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        self.view.backgroundColor = UIColor.midnightBlue()
     }
     
     

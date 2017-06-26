@@ -17,7 +17,9 @@ class AboutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.configureFlatNavigationBar(with: UIColor.midnightBlue())
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        self.view.backgroundColor = UIColor.midnightBlue()
         
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
@@ -25,7 +27,8 @@ class AboutViewController: UIViewController {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         self.aboutTextView.text = AboutStrings().about
-//        self.aboutTextView.backgroundColor = UIColor(red: 9/255, green: 9/255, blue: 26/255, alpha: 1.0)
+        self.aboutTextView.backgroundColor = UIColor.midnightBlue()
+
     }
     
     override func didReceiveMemoryWarning() {

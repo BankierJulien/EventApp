@@ -53,6 +53,6 @@ class MenuTableViewController: UITableViewController {
     func fadeImage() {
         index = index < self.sponserImageArray.count - 1 ? index + 1: 0
         self.sponsersImageView.image = self.sponserImageArray[index]
-        self.sponsersImageView.slideInFromRight()
+        self.sponsersImageView.slideInFromRight(duration: 1, completionDelegate: nil)
     }
 }
