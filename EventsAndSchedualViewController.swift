@@ -63,13 +63,11 @@ class EventsAndSchedualViewController: UIViewController {
         self.dayCollectionView.dataSource = self
         self.dayCollectionView.delegate = self
         
-      
-
-        self.tabBar.items?.first?.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.init(red: 200/255, green: 64/255, blue: 50/255, alpha: 1.0) ], for: .selected)
-        self.tabBar.items?.last?.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.init(red: 200/255, green: 64/255, blue: 50/255, alpha: 1.0) ], for: .selected)
         
-        // select monday
-        
+        UITabBarItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Montserrat-Bold", size: 20)!], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Montserrat-Bold", size: 20)!], for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.alizarin()], for: .selected)
+       
     }
     
     override func didReceiveMemoryWarning() {
@@ -108,7 +106,7 @@ class EventsAndSchedualViewController: UIViewController {
         }
     }
     
-  
+    
     
 }
 
@@ -138,13 +136,15 @@ extension EventsAndSchedualViewController : UITableViewDataSource{
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! EventTableViewCell
         
-        let buttonWidth: CGFloat = 40
+//        let buttonWidth: CGFloat = 40
         
-        self.attendButton = UIButton(frame: CGRect(x:cell.frame.size.width - buttonWidth, y:cell.frame.size.height/2 - buttonWidth, width:buttonWidth, height:buttonWidth))
-        self.attendButton.addTarget(self, action: #selector(didPressAttendButton(sender:)), for: .touchUpInside)
-        self.attendButton.tag = indexPath.row
-        self.attendButton.backgroundColor = UIColor.blue
-       
+        //        self.attendButton = UIButton(frame: CGRect(x:cell.frame.size.width - buttonWidth, y:cell.frame.size.height/2 - buttonWidth, width:buttonWidth, height:buttonWidth))
+        //        self.attendButton.addTarget(self, action: #selector(didPressAttendButton(sender:)), for: .touchUpInside)
+        //        self.attendButton.tag = indexPath.row
+        //        self.attendButton.backgroundColor = UIColor.blue
+        //
+        cell.addButton.addTarget(self, action: #selector(didPressAttendButton(sender:)), for: .touchUpInside)
+        cell.addButton.tag = indexPath.row
         
         if self.tabBar.selectedItem?.tag == 0 {
             cell.eventPerformer.text = self.currentDayEvents[indexPath.row].headliner
@@ -153,7 +153,7 @@ extension EventsAndSchedualViewController : UITableViewDataSource{
             cell.eventVenue.text = self.currentDayEvents[indexPath.row].venue
             cell.eventImage.image = self.currentDayEvents[indexPath.row].eventImage
             cell.addSubview(self.attendButton)
-
+            
         }
         else {
             cell.eventPerformer.text = self.myEvents[indexPath.row].headliner
@@ -162,7 +162,7 @@ extension EventsAndSchedualViewController : UITableViewDataSource{
             cell.eventVenue.text = self.myEvents[indexPath.row].venue
             cell.eventImage.image =  self.myEvents[indexPath.row].eventImage
             cell.addSubview(self.attendButton)
-
+            
         }
         
         return cell
@@ -170,31 +170,29 @@ extension EventsAndSchedualViewController : UITableViewDataSource{
     
     
     func didPressAttendButton(sender:UIButton) {
-        print(sender.tag)
+        sender.isSelected = !sender.isSelected;
         
-        print(self.attendButton.tag)
+//        if sender.isSelected {
+//            sender.tintColor = UIColor.alizarin()
+//            
+//        }
+//        else {
+//            sender.tintColor = UIColor.green
+//            
+//        }
+//                            sender.tintColor = UIColor.alizarin()
+//
+//        sender.tintColor = UIColor.belizeHole()
+//        print(sender.tag)
 
-        if self.attendButton.isSelected {
-            print("sel")
-//            self.attendButton.isSelected = !self.attendButton.isSelected
-
-        }
-        else {
-            print("not")
-//            self.attendButton.isSelected = !self.attendButton.isSelected
-
-        }
-        
-        
         
         if self.tabBar.selectedItem?.tag == 0 {
-            self.attendButton.backgroundColor = UIColor.red
             self.addEventToSchedual(eventIndex: sender.tag)
         }
         else {
-            self.attendButton.backgroundColor = UIColor.green
             self.removeEventFromSchedual(eventIndex: sender.tag)
         }
+        
         self.eventTableView.reloadData()
     }
     
@@ -284,8 +282,15 @@ extension EventsAndSchedualViewController: UICollectionViewDelegate {
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell  = collectionView.cellForItem(at: indexPath as IndexPath)!
-        cell.backgroundColor = UIColor(red: 200/255, green: 64/255, blue: 50/255, alpha: 1.0)
+        
+        for cell in collectionView.visibleCells {
+            if cell.isSelected {
+                cell.backgroundColor = UIColor.alizarin()
+            }
+            else {
+                cell.backgroundColor = UIColor.clear
+            }
+        }
         
         switch indexPath.row {
         case day.monday.rawValue:
@@ -324,18 +329,23 @@ extension EventsAndSchedualViewController: UICollectionViewDelegate {
         self.eventTableView.reloadData()
     }
     
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let cell  = collectionView.cellForItem(at: indexPath as IndexPath)!
-        cell.backgroundColor = UIColor.clear
-    }
 }
 
 extension EventsAndSchedualViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"dayCell", for: indexPath) as! DayCollectionViewCell
+        
+        if (indexPath.row == 0){
+            cell.backgroundColor = UIColor.alizarin()
+        }
+        else {
+            cell.backgroundColor = UIColor.clear
+        }
+        
         cell.dayLabel.text = arrayOfDays[indexPath.row]
-        cell.backgroundColor = UIColor.clear
         cell.layer.cornerRadius = 2.0
         cell.layer.borderWidth = 1.0
         cell.layer.borderColor = UIColor.clear.cgColor

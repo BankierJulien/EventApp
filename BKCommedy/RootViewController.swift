@@ -62,33 +62,33 @@ class RootViewController: UIViewController {
         self.view.addSubview(flatButton)
         self.introTextLabel.sendSubview(toBack: introTextLabel)
         flatButton.addTarget(self, action:#selector(buyTicketPressed(Sender:)), for: .touchUpInside)
-
-
+        //set to alst in array
+        self.setHomeViewUpForEventAtIndex(index: EventManager().allEvents.count - 1)
         
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         _ = Timer.scheduledTimer(timeInterval: 5, target: self,  selector: (#selector(fadeImage)), userInfo: nil, repeats: true)
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-      //  self.homeImageTimer = nil
-    }
-    
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    //MARK: stop vtimer on exits
+
     func fadeImage() {
         index = index <  EventManager().allEvents.count - 1 ? index + 1: 0
+        self.setHomeViewUpForEventAtIndex(index: index)
+        self.homeImageView.slideInFromRight()
+        self.eventDetailsHomePageView.slideInFromRight()
+    }
+    
+    func setHomeViewUpForEventAtIndex(index: Int){
         self.homeImageView.image = EventManager().allEvents[index].eventImage
         self.eventText.text = EventManager().allEvents[index].headliner
         self.eventVenue.text = EventManager().allEvents[index].venue
         self.eventTime.text = EventManager().allEvents[index].time
-        self.homeImageView.slideInFromRight()
-        self.eventDetailsHomePageView.slideInFromRight()
     }
     
     func buyTicketPressed(Sender: UIButton){

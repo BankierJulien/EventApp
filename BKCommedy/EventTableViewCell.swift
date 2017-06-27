@@ -16,6 +16,7 @@ class EventTableViewCell: UITableViewCell {
     @IBOutlet var eventVenue: UILabel!
     @IBOutlet var eventTime: UILabel!
     
+    @IBOutlet var addButton: UIButton!
     
     
     override func awakeFromNib() {

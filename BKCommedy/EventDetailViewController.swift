@@ -27,8 +27,14 @@ class EventDetailViewController: UIViewController {
         self.navigationController?.title = selectedEvent.headliner
         self.navigationController?.navigationBar.configureFlatNavigationBar(with: UIColor.midnightBlue())
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
-//        self.navigationController?.navigationBar.it TitleTextAttributes = ([NSForegroundColorAttributeName: UIColor.init(red: 200/255, green: 64/255, blue: 50/255, alpha: 1.0) ], for: .selected)
-
+        
+//        let backButton = UIButton(type: .custom)
+//        backButton.setImage(#imageLiteral(resourceName: "backButton"), for: .normal)
+//        backButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+//        backButton.addTarget(self, action: #selector(backButtonPressed(Sender:)), for: .touchUpInside)
+//        let backButtonItem = UIBarButtonItem(customView: backButton)
+//
+//        self.navigationItem.setLeftBarButton(backButtonItem, animated: true)
         
         self.eventHeadlingerLabel.text = selectedEvent.headliner
         self.eventOpenersLabel.text = selectedEvent.openers
@@ -42,6 +48,11 @@ class EventDetailViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    func backButtonPressed(Sender: UIButton){
+        self.navigationController?.popViewController(animated: true)
     }
     
 

@@ -24,7 +24,8 @@ class MenuTableViewController: UITableViewController {
         blurEffect.frame = blurView.bounds
         blurView.addSubview(blurEffect)
         blurView.sendSubview(toBack: blurEffect)
-        
+        self.sponsersImageView.image = sponserImageArray.last
+        self.view.backgroundColor = UIColor.midnightBlue()
     }
 
     override func didReceiveMemoryWarning() {
