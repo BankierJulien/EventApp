@@ -67,6 +67,10 @@ class EventsAndSchedualViewController: UIViewController {
         UITabBarItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Montserrat-Bold", size: 20)!], for: .normal)
         UITabBarItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Montserrat-Bold", size: 20)!], for: .selected)
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.alizarin()], for: .selected)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(hamburgerMenuDidOpen), name: Notification.Name("menuDidOpen"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(hamburgerMenuDidClose), name: Notification.Name("menuDidClose"), object: nil)
+        
        
     }
     
@@ -76,6 +80,7 @@ class EventsAndSchedualViewController: UIViewController {
     }
     
     func formateEventsForText() -> String{
+        // maybe this should be on a dif thread at least the open text maessage part
         var textMessage = String()
         let introString = "Hey, this is my schedual for the BK Comedy Festival, check it out:\n\n"
         if self.myEvents.isEmpty{
@@ -107,6 +112,19 @@ class EventsAndSchedualViewController: UIViewController {
     }
     
     
+    func hamburgerMenuDidOpen() {
+        self.eventTableView.isUserInteractionEnabled = false
+        self.tabBar.isUserInteractionEnabled = false
+        self.dayCollectionView.isUserInteractionEnabled = false
+
+    }
+    
+    func hamburgerMenuDidClose() {
+        self.eventTableView.isUserInteractionEnabled = true
+        self.tabBar.isUserInteractionEnabled = true
+        self.dayCollectionView.isUserInteractionEnabled = true
+    }
+    
     
 }
 
@@ -135,16 +153,13 @@ extension EventsAndSchedualViewController : UITableViewDataSource{
         
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! EventTableViewCell
-        
-//        let buttonWidth: CGFloat = 40
-        
-        //        self.attendButton = UIButton(frame: CGRect(x:cell.frame.size.width - buttonWidth, y:cell.frame.size.height/2 - buttonWidth, width:buttonWidth, height:buttonWidth))
-        //        self.attendButton.addTarget(self, action: #selector(didPressAttendButton(sender:)), for: .touchUpInside)
-        //        self.attendButton.tag = indexPath.row
-        //        self.attendButton.backgroundColor = UIColor.blue
-        //
+ 
         cell.addButton.addTarget(self, action: #selector(didPressAttendButton(sender:)), for: .touchUpInside)
         cell.addButton.tag = indexPath.row
+        print(cell.addButton.isSelected)
+//        cell.addButton.setImage(#imageLiteral(resourceName: "remove"), for: .selected)
+//        cell.addButton.setImage(#imageLiteral(resourceName: "add"), for: .normal)
+
         
         if self.tabBar.selectedItem?.tag == 0 {
             cell.eventPerformer.text = self.currentDayEvents[indexPath.row].headliner
@@ -152,7 +167,6 @@ extension EventsAndSchedualViewController : UITableViewDataSource{
             cell.eventTime.text = self.currentDayEvents[indexPath.row].time
             cell.eventVenue.text = self.currentDayEvents[indexPath.row].venue
             cell.eventImage.image = self.currentDayEvents[indexPath.row].eventImage
-            cell.addSubview(self.attendButton)
             
         }
         else {
@@ -161,7 +175,6 @@ extension EventsAndSchedualViewController : UITableViewDataSource{
             cell.eventTime.text = self.myEvents[indexPath.row].time
             cell.eventVenue.text = self.myEvents[indexPath.row].venue
             cell.eventImage.image =  self.myEvents[indexPath.row].eventImage
-            cell.addSubview(self.attendButton)
             
         }
         
@@ -184,16 +197,25 @@ extension EventsAndSchedualViewController : UITableViewDataSource{
 //
 //        sender.tintColor = UIColor.belizeHole()
 //        print(sender.tag)
+        
+//        if self.myEvents.contains(cell for snder){
+//        then remove it and set to +
+        // else
+        // add it and set to -
+
+        
 
         
         if self.tabBar.selectedItem?.tag == 0 {
+            sender.setImage(#imageLiteral(resourceName: "backButton"), for: .normal)
             self.addEventToSchedual(eventIndex: sender.tag)
         }
         else {
+            sender.setImage(#imageLiteral(resourceName: "SplashOne"), for: .normal)
             self.removeEventFromSchedual(eventIndex: sender.tag)
         }
-        
-        self.eventTableView.reloadData()
+//        
+//        self.eventTableView.reloadData()
     }
     
     // MARK: Array Logic and User Deaults logic

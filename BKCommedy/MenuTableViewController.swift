@@ -27,6 +27,16 @@ class MenuTableViewController: UITableViewController {
         self.sponsersImageView.image = sponserImageArray.last
         self.view.backgroundColor = UIColor.midnightBlue()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let notification = NotificationCenter.default
+        notification.post(name: Notification.Name("menuDidOpen"), object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        let notification = NotificationCenter.default
+        notification.post(name: Notification.Name("menuDidClose"), object: nil)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -39,12 +49,14 @@ class MenuTableViewController: UITableViewController {
             headerView.backgroundColor = UIColor.midnightBlue()
             titleLabel.text = "BK Comedy Festival"
             titleLabel.textColor = UIColor.white
+            titleLabel.font = UIFont.init(name: "Montserrat-Bold", size: 15)
             headerView.addSubview(titleLabel)
         }
         else if section == 1{
             headerView.backgroundColor = UIColor.midnightBlue()
             titleLabel.text = "Sponsers"
             titleLabel.textColor = UIColor.white
+            titleLabel.font = UIFont.init(name: "Montserrat-Bold", size: 15)
             headerView.addSubview(titleLabel)
         }
         return headerView

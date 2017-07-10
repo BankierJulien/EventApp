@@ -74,6 +74,7 @@ class VenueDetailViewController: UIViewController {
     @IBAction func backButtonTapped(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
     //MARK : MAPVIEW FUNCTIONS
     func setUpMapViewWithAddress(addressString:String) {
        let geocoder = CLGeocoder()

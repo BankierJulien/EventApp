@@ -13,6 +13,9 @@
         <array key="Montserrat-Bold.otf">
             <string>Montserrat-Bold</string>
         </array>
+        <array key="Montserrat-ExtraBold.otf">
+            <string>Montserrat-ExtraBold</string>
+        </array>
         <array key="Montserrat-Light.otf">
             <string>Montserrat-Light</string>
         </array>
@@ -219,7 +222,6 @@
                                                     <rect key="frame" x="340" y="62" width="24" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="add"/>
-                                                    <state key="selected" image="remove"/>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.31372549019607843" green="0.4392156862745098" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
@@ -276,7 +278,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pif-Sv-1rs">
                                                     <rect key="frame" x="0.0" y="0.0" width="68" height="36"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="18"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1001,7 +1003,6 @@
         <image name="backButton" width="24" height="24"/>
         <image name="events" width="1000" height="369"/>
         <image name="knittingfactoryImage" width="1000" height="369"/>
-        <image name="remove" width="24" height="24"/>
         <image name="upload" width="24" height="24"/>
         <image name="venues" width="1000" height="369"/>
     </resources>

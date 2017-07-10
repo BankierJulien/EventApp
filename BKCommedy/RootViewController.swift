@@ -64,18 +64,22 @@ class RootViewController: UIViewController {
         flatButton.addTarget(self, action:#selector(buyTicketPressed(Sender:)), for: .touchUpInside)
         //set to alst in array
         self.setHomeViewUpForEventAtIndex(index: EventManager().allEvents.count - 1)
-        
+//        
+//        NotificationCenter.default.addObserver(self, selector: #selector(hamburgerMenuDidOpen), name: Notification.Name("menuDidOpen"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(hamburgerMenuDidClose), name: Notification.Name("menuDidClose"), object: nil)
+
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         _ = Timer.scheduledTimer(timeInterval: 5, target: self,  selector: (#selector(fadeImage)), userInfo: nil, repeats: true)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    
+
 
     func fadeImage() {
         index = index <  EventManager().allEvents.count - 1 ? index + 1: 0

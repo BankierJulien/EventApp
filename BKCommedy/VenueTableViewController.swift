@@ -12,6 +12,7 @@ class VenueTableViewController: UITableViewController {
     
     let venues = VenueManager().allVenues
     var venueImage = UIImage()
+    var menuIsOpen = false
     @IBOutlet var menuButton: UIBarButtonItem!
     
     override func viewDidLoad() {
@@ -23,11 +24,29 @@ class VenueTableViewController: UITableViewController {
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(hamburgerMenuDidOpen), name: Notification.Name("menuDidOpen"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(hamburgerMenuDidClose), name: Notification.Name("menuDidClose"), object: nil)
+
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    
+    func hamburgerMenuDidOpen() {
+        self.menuIsOpen = true
+        self.tableView.reloadData()
+    }
+    
+    func hamburgerMenuDidClose() {
+        self.menuIsOpen = false
+        self.tableView.reloadData()
+    }
+    
+    
     
     // MARK: - Table view data source
     
@@ -40,6 +59,13 @@ class VenueTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "venueCell", for: indexPath) as! VenueTableViewCell
         cell.venueName.text = venue.name
         cell.venueImage.image = venue.image
+        
+        if self.menuIsOpen{
+            cell.isUserInteractionEnabled = false
+        }
+        else {
+            cell.isUserInteractionEnabled = true
+        }
         return cell
     }
     
